@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout1"
+      xmlns:pibetting="">
+<head>
+
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+
+</head>
+
+<body style="background-color: #ADD8E6">
+
+
+
+    <div class="container"  layout:fragment="conteudo">
+
+        <form method="POST" th:object="${usuario}" th:action="@{/usuario/novo}">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center" style="border: solid black 1px; transform: translateY(20vh); border-radius: 5px;">
+                    <div class="row" style="margin-bottom: 50px;">
+                        <h3>Agora você só precisa confirmar seu email em:</h3>
+                        <h4 th:text="|${email}|"></h4>
+                        <span class="hidden" id="token" th:text="|${token}|"></span>
+                    </div>
+
+                    <div class="text-center"  style="margin: 45px auto;">
+                        <h4>Não recebeu o email?</h4>
+                        <span class="badge badge-warning hidden" id="botao30Segundos">Verifique se o email de confirmação chegou no endereço informado. Você só poderá solicitar um novo reenvio após 5 minutos.</span>
+                        <a id="botaoReenviarEmail"  class="btn btn-primary">Reenviar email</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <th:block layout:fragment="javascript-extra">
+      <script th:src="@{/javascripts/usuario.botao-reenviar-email.js}"></script>
+    </th:block>
+
+</body>
+
+</html>

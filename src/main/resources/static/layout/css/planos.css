@@ -1,0 +1,43 @@
+body {
+	background-color: #FFF;
+}
+
+.centralizarVerticalmente{
+	margin-top: 50vh;
+	transform: translateY(-100%);	
+}
+
+.titulo-preco{
+	font-size: 3rem;
+}
+
+.fonte {
+    font-family: Times, "Times New Roman", serif;
+}
+
+.pricingCurrency{
+	justify-content: center;
+}
+
+.mt-25{
+	margin-top: 25px;
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+
+.botao {
+	width: 130px;
+}
+
+.letra {
+	font-size: 20px;
+}
+
+@media (max-width: 767px){
+
+	.letra {
+		font-size: 15px;
+	}
+}

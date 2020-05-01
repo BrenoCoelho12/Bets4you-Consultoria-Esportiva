@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/layout1">
+	
+<head>
+   
+  <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/css/pagina_inicial.css}">
+  <script src="https://kit.fontawesome.com/df0b61cc0c.js"></script>
+
+</head>
+<body>
+
+<div layout:fragment="conteudo">
+
+
+	 <div class="section-1">
+		<div class="container">
+		 	<div class="row col-md-12 col-sm-12">
+				<div class="col-md-5 col-sm-5">
+					<div class="row">
+						<h1 class="titulo">Quem somos?</h1>	
+					</div>
+				 	<div class="row">
+				 		<p>Somos uma consultoria em apostas esportivas que deseja transformar o seu hobby em investimento! Através de análises criteriosas e métodos profissionais disponibilizamos apostas diariamente para membros VIP!</p>
+				 	</div>
+				</div>
+				<div class="col-md-3 col-sm-3">
+				 	
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="row">
+						<h1 class="titulo">Siga-nos nas redes sociais</h1>	
+					</div>
+				 	<div class="row">
+				 		<!--Instagram-->
+				 		
+				 	</div>
+				</div>
+			</div>	
+		</div>
+	 </div>
+
+	 <div class="section-2">
+	 	<div class="container">
+	 		<div class="row">
+	 				
+	 					<div class="col-md-12 col-sm-12 section-2-1 mt-30">
+	 						
+	 						<div class="col-md-4 col-sm-4">
+	 							<div class="text-center mt-200">
+		 							<div class="row">
+		 								<h4><span>Guia para iniciante</span></h4>	
+		 							</div>
+		 							<div class="row">
+		 								<h4><span>Aposta grátis diária</span></h4>	
+		 							</div>
+		 							<div class="row">
+		 								<h4><span>Acesso diário as apostas VIP</span></h4>	
+		 							</div>
+		 							<div class="row">
+		 								<h4><span>Grupo VIP no telegram</span></h4>	
+		 							</div>
+		 						</div>
+	 						</div>	
+
+	 						<div class="col-md-4 col-sm-4">
+	 							<div class="text-center mt-30 mb-30 pull-right mr-80">
+		 							<div class="row">
+		 								<h3 class="titulo">Usuário básico</h3>	
+		 							</div>
+		 							<div class="row">
+		 								<span class="label label-info">PLANO GRÁTIS</span>			
+		 							</div>
+		 							<div class = "row pricingCurrency">
+										<h1 class="titulo-preco">
+											<strong>R$0.00</strong>
+										</h1>
+									</div>	
+									<div class="row mt-22">
+										<i class="fas fa-check text-success fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<i class="fas fa-check text-success fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<i class="fas fa-times text-danger fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<i class="fas fa-times text-danger fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<a th:href="@{/usuario/novo}" class="btn btn-info">Cadastre-se</a>
+									</div>
+		 						</div>
+	 						</div>
+
+	 						<div class="col-md-4 col-sm-4">
+		 						<div class="text-center mt-30 mb-30 pull-right mr-80">
+		 							<div class="row">
+		 								<h3 class="titulo">Usuário VIP</h3>	
+		 							</div>
+		 							<div class="row">
+		 								<span class="label label-success">PLANO A PARTIR DE</span>			
+		 							</div>
+		 							<div class = "row pricingCurrency">
+										<h1 class="titulo-preco">
+											<strong>R$19.99</strong>
+										</h1>
+									</div>	
+									<div class="row mt-22">
+										<i class="fas fa-check text-success fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<i class="fas fa-check text-success fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<i class="fas fa-times text-danger fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<i class="fas fa-times text-danger fa-lg"></i>
+									</div>
+									<div class="row mt-22">
+										<a th:href="@{/planos}" class="btn btn-success">Quero ser VIP!</a>
+									</div>
+		 						</div>
+	 						</div>
+
+	 					</div>
+
+	 				
+	 			</div>
+
+	 			<div class="row text-center mt-30">
+	 				<span class="text-row-white">Transforme seu hobby em investimento!</span>
+	 			</div>
+	 	</div>
+	 </div>
+
+	 <div class="section-3">
+	 		
+	 </div>
+
+	 <a id="whatsapp-bubble" href="https://wa.me/5584996878281" style=" position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+        z-index:1000;" target="_blank">
+        <i style="margin-top:16px" class="fab fa-whatsapp"></i>
+     </a>
+
+     <section id="footer">
+    <div class="container">
+
+      <div class="row text-center text-xs-center text-sm-left text-md-left">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>PIBetting</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Sobre nós</a></li>
+            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Gestão de banca</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+            <h5>Conecte-se a nós</h5>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                  <ul class="list-unstyled list-inline social text-center">
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="https://wa.me/5584996878281"><i class="fab fa-whatsapp"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                  </ul>
+                </div>
+            </div>  
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Contato</h5>
+          <ul class="list-unstyled quick-links">
+            <li class="list-inline-item"><a href="https://wa.me/5584996878281"><i class="fab fa-whatsapp"></i>(84) 996878281</a></li>
+            <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i>pibettingconsultoria@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+     
+     <hr>
+      <a id="whatsapp-bubble" href="https://wa.me/5584996878281" style=" position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+        z-index:1000;" target="_blank">
+        <i style="margin-top:16px" class="fab fa-whatsapp"></i>
+      </a>
+
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+              Copyright © 2019 | PIBetting
+        </div>
+      </div>  
+
+    </div>
+  </section>
+	 
+	
+		
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>PIBetting - Consultoria</title>
+  
+  <link rel="stylesheet" th:href="@{/layout/css/barra_navegacao.css}">
+  
+</head>
+
+<body>
+	
+  <input type="hidden" name="_csrf" th:value="${_csrf.token}"/> <!-- aula 19.9 -->
+  <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}"/>	<!-- aula 19.9 -->
+	
+  <div th:replace="layout/fragments/BarraNavegacao2 :: barra_navegacao"></div>
+  
+  <div layout:fragment="conteudo">
+  	
+  </div>
+	
+	<script th:src="@{/layout/js/jquery-2.2.4.min.js}"></script>
+  	<script th:src="@{/layout/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script>
+  	
+  	<th:block layout:fragment="javascript-extra"></th:block>
+  	
+</body>	
+
+</html>

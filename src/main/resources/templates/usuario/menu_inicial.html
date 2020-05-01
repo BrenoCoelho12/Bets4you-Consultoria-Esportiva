@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/layout2">
+	
+<head>
+  
+  <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/css/menu_inicial.css}">
+  
+</head>
+
+<body>
+  
+  <div class="container" layout:fragment="conteudo">
+	<div class="row">
+
+
+	  	<!-- Cada aposta tera uma div dessa abaixo, representado 1 panel -->
+	  	<div class="panel panel-default col-xs-10 col-xs-offset-1 col-md-5 text-center">
+		  
+		  <div class="panel-heading text-center">
+		  	Liga
+		  </div>
+
+		  <div class="panel-body">
+		  	
+		  	<div class="row">
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/atletico-mineiro.png}">
+		  			
+		  		</div>
+		  		<div>
+		  			<span><strong>Avai</strong></span>
+		  		</div>
+		  		<div class="x">
+		  		<span ><strong>x</strong></span>
+		  		</div>
+		  		<div>
+		  			<span><strong>Bahia</strong></span>
+		  		</div>
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/athletico-paranaense.png}">
+		  		</div>
+		  		<div>
+		  			<h6><span class="label label-default x">VITÓRIA DO ATHLETICO PARANAENSE</span></h6>
+		  		</div>
+		  	</div>
+		  	<hr>
+		  	<div class="row">
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/avai.png}">
+		  		</div>
+		  		<div>
+		  			<span><strong>Avai</strong></span>
+		  		</div>
+		  		<div class="x">
+		  		<span ><strong>x</strong></span>
+		  		</div>
+		  		<div>
+		  			<span><strong>Bahia</strong></span>
+		  		</div>
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/bahia.png}">
+		  		</div>
+		  		<div>
+		  			<h6><span class="label label-default x">VITÓRIA DO BAHIA</span></h6>
+		  		</div>
+		  	</div>
+		  	<hr>
+		  </div>
+
+		  <div class="panel-footer">
+		  	<div class="row">
+		  		<div class="text-center">
+		  			<h6><span class="label label-default x">Odd média: 2.00</span></h6>
+		  		</div>
+		  	</div>
+		  </div>
+
+		</div>
+
+		<div class="panel panel-default col-xs-10 col-xs-offset-1 col-md-5  text-center">
+		  
+		  <div class="panel-heading text-center">
+		  	Liga
+		  </div>
+
+		  <div class="panel-body">
+		  	
+		  	<div class="row">
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/atletico-mineiro.png}">
+		  		</div>
+		  		<div>
+		  			<span><strong>Avai</strong></span>
+		  		</div>
+		  		<div class="x">
+		  		<span ><strong>x</strong></span>
+		  		</div>
+		  		<div>
+		  			<span><strong>Bahia</strong></span>
+		  		</div>
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/athletico-paranaense.png}">
+		  		</div>
+		  		<div>
+		  			<h6><span class="label label-default x">VITÓRIA DO ATHLETICO PARANAENSE</span></h6>
+		  		</div>
+		  	</div>
+		  	<hr>
+		  	<div class="row">
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/avai.png}">
+		  		</div>
+		  		<div>
+		  			<span><strong>Avai</strong></span>
+		  		</div>
+		  		<div class="x">
+		  		<span ><strong>x</strong></span>
+		  		</div>
+		  		<div>
+		  			<span><strong>Bahia</strong></span>
+		  		</div>
+		  		<div>
+		  			<img class="logo-equipe" th:src="@{/layout/img/brasil/bahia.png}">
+		  		</div>
+		  		<div>
+		  			<h6><span class="label label-default x">VITÓRIA DO BAHIA</span></h6>
+		  		</div>
+		  	</div>
+		  	<hr>
+		  </div>
+
+		  <div class="panel-footer">
+		  	<div class="row">
+		  		<div class="text-center">
+		  			<h6><span class="label label-default x">Odd média: 2.00</span></h6>
+		  		</div>
+		  	</div>
+		  </div>
+
+  	</div>
+  </div>
+</div>
+
+</body>
+</html>

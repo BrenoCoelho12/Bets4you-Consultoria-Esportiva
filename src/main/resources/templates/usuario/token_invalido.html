@@ -1,0 +1,38 @@
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout1"
+      xmlns:pibetting="">
+
+<head>
+    <title>Token inválido</title>
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container" layout:fragment="conteudo">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center" style="transform: translateY(20vh); border-radius: 5px; height: 300px;">
+
+            <div class="row">
+                <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i>
+            </div>
+            <div class="row">
+                <h1>Token inválido! Qualquer dúvida entre em contato conosco.<i class="fa fa-frown-o" aria-hidden="true"></i></h1>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <a th:href="@{/}" class="btn btn-primary" style="width: 160px;">Página Inicial</a>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <a th:href="@{/login}" class="btn btn-success" style="width: 160px;">Pagina de Login</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

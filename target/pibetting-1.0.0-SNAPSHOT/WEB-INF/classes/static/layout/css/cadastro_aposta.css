@@ -1,0 +1,42 @@
+.hr-vertical {
+  border-right: 2px ridge black;
+  height: 100%;
+}
+
+.button-delete-row:hover {
+	cursor:pointer;
+}
+
+.mb-40 {
+	margin-bottom: 40px;
+}
+
+.pb-field-required > .control-label:after {
+	content: "*";
+}
+
+.div-equipe {
+	border: solid grey 0.5px;
+	border-radius: 10px;
+}
+
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.idEquipe {
+	width: 70px;
+}
+
+.odd {
+	width: 70px;
+}
+
+.nome-equipe {
+	width: 300px;
+}
+

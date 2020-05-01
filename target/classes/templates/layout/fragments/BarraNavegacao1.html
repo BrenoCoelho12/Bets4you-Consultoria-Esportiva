@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-static-top navegacao text-center" th:fragment="barra_navegacao">
+	    <div class="container">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a href="menu_inicial.html" class="navbar-brand">
+          		<img th:src="@{/layout/img/logo-gray.png}" alt="Watch Guru">
+        	</a>
+	      </div>
+	      
+	      <div class="collapse navbar-collapse" id="menu">
+	        <ul class="nav navbar-nav">
+	          <li><a href="#">Como trabalhamos?</a></li>
+	          <li><a href="#">Mais sobre Gestão de banca!</a></li>
+	          <li><a href="#">Nossos serviços </a></li>
+	          <li><a th:href="@{/planos}">Planos VIP</a>
+	        </ul>
+	         
+	        <ul class="nav navbar-nav navbar-right text-center">
+	         <li>
+	           <a th:href="@{/usuario/novo}">Cadastre-se agora</a>
+	         </li>
+	         
+	         <li>
+	            <a th:href="@{/login}">Entrar</a>
+	          </li>
+	          
+	        </ul> 
+	        
+	      </div>
+	    </div>
+	 </nav>
+	 
+</body> 
+</html>

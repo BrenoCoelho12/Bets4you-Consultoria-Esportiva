@@ -1,0 +1,16 @@
+.login-form {
+	margin-top: 50vh;
+	padding: 20px 30px;
+	background-color: #fff;
+	color: #666666;
+	transform: translateY(-60%);
+	border: 1.5px solid gray;
+	border-radius: 10px;
+}
+
+.pb-field-required > .control-label:after {
+	content: "*";
+}
+
+
+

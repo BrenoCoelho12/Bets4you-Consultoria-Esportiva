@@ -1,0 +1,54 @@
+.logotipo img {
+	height:30px;
+}
+
+.perfil {
+	padding: 10px;
+}
+
+.perfil li:first-child {
+	font-size: 1.3em;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.aposta {
+	width: 100vh;
+}
+
+.logo-equipe {
+	height: 50px;
+}
+
+.x {
+	margin: 10px auto;
+}
+
+.navegacao {
+	padding: 10px;
+}
+
+
+/*.linha-vertical {
+  height: 500px; /*Altura da linha
+  border-left: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.
+}*/
+
+@media (max-width: 767px){
+
+	.perfil {
+		color: #FFF;
+	}
+
+	.perfil a {
+		color: #9d9d9d;
+		display: block;
+		padding: 5px 0px;
+	}
+
+	.perfil a:hover{
+		text-decoration: none;
+		color: #FFF;
+	}
+
+}
