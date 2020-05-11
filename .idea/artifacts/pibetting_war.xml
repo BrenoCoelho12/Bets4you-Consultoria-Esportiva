@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pibetting:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>pibetting</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="pibetting-1.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="pibetting:war exploded" />
+    </root>
+  </artifact>
+</component>

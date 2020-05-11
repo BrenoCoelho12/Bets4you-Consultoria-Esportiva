@@ -34,12 +34,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring()
 		.antMatchers("/layout/**")
 		.antMatchers("/javascripts/**")
+		.antMatchers("/images/**")
 		.antMatchers("/") //pagina inicial
-		.antMatchers("/planos") //pagina de visualização dos planos vips
-		.antMatchers("/usuario/novo") //pagina de cadastro de usuário
-		.antMatchers("/usuario/aguardandoConfirmacaoEmail")
+		.antMatchers("/planos")//pagina de visualização dos planos vips
+		.antMatchers("/usuario/novo") //pagina de cadastro de usuário.antMatchers("/usuario/aguardandoConfirmacaoEmail")
 		.antMatchers(HttpMethod.GET, "/usuario/email/confirmRegistration")
-		.antMatchers("/usuario/email/reenviar");//redirecionada ao apertar o botao de confirmar email
+		.antMatchers("/usuario/email/reenviar")
+		.antMatchers("/usuario/resetPassword")
+		.antMatchers( "/usuario/email/confirmPassword");//redirecionada ao apertar o botao de confirmar email
+;
 	}
 	
 	@Override
@@ -48,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/aposta/novo").hasAuthority("CADASTRO_APOSTA") //seção 19.6
 				.antMatchers("/equipe/novo").hasAuthority("CADASTRO_EQUIPE") //seção 19.6
+				.antMatchers("/aposta/gerenciamentoApostas").hasAuthority("CADASTRO_APOSTA")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

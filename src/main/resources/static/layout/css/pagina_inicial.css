@@ -9,7 +9,7 @@ p{
 
 .section-1{
 	height: 730px;
-	background: url("../img/back.jpg");
+	background: url("../../images/back.jpg");
 	background-size: cover;
 	background-image: 100%;
 	background-position: center center;
@@ -208,7 +208,7 @@ section .section-title {
 }
 
 
-@media (width: 768px){
+@media (width: 1024px){
 	
 	.botao2{
 		margin-right: 318px;

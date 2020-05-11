@@ -2,6 +2,7 @@ package com.desenvolvimento.pibetting.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -53,14 +57,14 @@ public class Aposta implements Serializable{
 	private Integer qtdJogos; 
 	
 	@Column(name="created_in")
-	private Date data = new Date(); 
-	
+	private Date data = new Date();
+
 	@NotNull(message = "Insira corretamente o(s) jogo(s).")
 	@Size(min = 1, message = "A quantidade mínima de jogos é 1.")
 	@OneToMany(mappedBy = "codAposta")
+	@Fetch(FetchMode.JOIN)
 	private List<Jogo> jogos;
-	
-	
+
 	@PrePersist //PrePersist - Antes de persistir (salvar) qualquer conteudo no banco 
 	@PreUpdate  // PreUpdate -  Antes de atualizar qualquer conteudo
 	private void PrePersistUpdate() {
@@ -70,7 +74,17 @@ public class Aposta implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Modulo modulo;
 
-	
+	@Column(name = "status")
+	private Boolean status = false;
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -111,9 +125,7 @@ public class Aposta implements Serializable{
 		this.qtdJogos = qtdJogos;
 	}
 
-	public List<Jogo> getJogos() {
-		return jogos;
-	}
+	public List<Jogo> getJogos() { return jogos; }
 
 	public void setJogos(List<Jogo> jogos) {
 		this.jogos = jogos;
@@ -126,6 +138,10 @@ public class Aposta implements Serializable{
 	public void setModulo(Modulo modulo) {
 		this.modulo = modulo;
 	}
+
+	public Date getData() { return data; }
+
+	public void setData(Date data) { this.data = data; }
 
 	@Override
 	public int hashCode() {

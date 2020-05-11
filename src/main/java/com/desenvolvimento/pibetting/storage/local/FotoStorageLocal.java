@@ -24,7 +24,7 @@ public class FotoStorageLocal implements FotoStorage{
 	private Path localTemporario;
 	
 	public FotoStorageLocal() {
-		this(FileSystems.getDefault().getPath(System.getenv("HOME"), ".pibetting-img"));
+		this(FileSystems.getDefault().getPath(System.getenv("HOME"), "img-bets4you"));
 		
 	}
 	
@@ -94,7 +94,7 @@ public class FotoStorageLocal implements FotoStorage{
 		String novoNome = UUID.randomUUID().toString() + "_" + nomeOriginal;
 		
 		if(logger.isDebugEnabled()) {
-			logger.debug(String.format("Nome original: %s, nome nome: %s", nomeOriginal, novoNome));
+			logger.debug(String.format("Nome original: %s, novo nome: %s", nomeOriginal, novoNome));
 		}
 		
 		return novoNome;

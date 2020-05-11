@@ -20,4 +20,16 @@ public class CadastroApostaService {
 		
 		return aposta.getId();
 	}
+
+	@Transactional
+	public void atualizarStatus(Aposta aposta){
+		Boolean status = aposta.getStatus(); //pegando o status desejado para a aposta
+
+		aposta = apostas.findById(aposta.getId()); //pegando a aposta completa pelo id, já que o objeto 'aposta' chega apenas com o valor do id e do status.
+
+		aposta.setStatus(status); //setando na aposta o valor do status desejado
+
+		apostas.save(aposta); //atualizando a aposta para que tenha um novo status
+
+	}
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout2"
+      xmlns:pibetting="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de apostas</title>
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap-checkbox-toggle.min.css}">
+</head>
+
+<body>
+
+    <div class="container" layout:fragment="conteudo">
+        <div class="table-responsive">
+            <table th:each="aposta, itemStat : ${apostas}" class="table table-hover" style="margin-bottom: 10%">
+                <thead>
+                    <tr>
+                        <td colspan="8" style="text-align: center; background-color: #101010; color: #ffffff">Aposta</td>
+                    </tr>
+                    <tr>
+                        <td>Id</td>
+                        <td>Data</td>
+                        <td>Descrição</td>
+                        <td>Confiança</td>
+                        <td>Qtd. Jogos</td>
+                        <td>Odd</td>
+                        <td>Módulo</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr>
+                        <td class="js-id" style="font-weight: bold" th:text="${aposta.id}" th:color="black"></td>
+                        <td th:text="${aposta.data}"></td>
+                        <td th:text="${aposta.descricaoAposta}"></td>
+                        <td th:text="${aposta.confianca}"></td>
+                        <td th:text="${aposta.qtdJogos}"></td>
+                        <td th:text="${aposta.odd}"></td>
+                        <td th:text="${aposta.modulo.descricao}"></td>
+                        <td><input class="toggle-event" type="checkbox" th:classappend="${aposta.status} ? checked : ''" th:data-idAposta="${aposta.id}" data-toggle="toggle" data-width="100" data-onstyle="success" data-on="Ativa" data-off="Não ativa"></td>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td colspan="8" style="text-align: center;background-color:#8a6d3b; color: #ffffff">Jogos</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">#</td>
+                        <td colspan="2">Mandante</td>
+                        <td colspan="2">Visitante</td>
+                        <td colspan="2">Sugestão</td>
+                        <td colspan="1">Odd</td>
+                    </tr>
+                    <tr th:each="jogo : ${apostas[__itemStat.index__].jogos}">
+                        <td colspan="1" th:text="${jogo.id}"></td>
+                        <td colspan="2" th:text="${jogo.mandante.nome}"></td>
+                        <td colspan="2" th:text="${jogo.visitante.nome}"></td>
+                        <td colspan="2" th:text="${jogo.sugestao}"></td>
+                        <td colspan="1" th:text="${jogo.odd}"></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <th:block layout:fragment="javascript-extra">
+        <script th:src="@{/javascripts/vendors/bootstrap-checkbox-toggle.min.js}"></script>
+        <script th:src="@{/javascripts/botao-checked-toggle.js}"></script>
+        <script>
+            var buttonToggleChecked = $(".checked");
+            buttonToggleChecked.prop("checked", true);
+        </script>
+    </th:block>
+</body>
+</html>

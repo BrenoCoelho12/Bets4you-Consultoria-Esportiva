@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import com.desenvolvimento.pibetting.mail.Mailer;
 import com.desenvolvimento.pibetting.model.TokenValidation;
+import com.desenvolvimento.pibetting.repository.Apostas;
 import com.desenvolvimento.pibetting.repository.Tokens;
 import com.desenvolvimento.pibetting.repository.Usuarios;
 import com.desenvolvimento.pibetting.service.CadastroTokenService;
@@ -39,6 +40,9 @@ public class UsuarioController {
 	private Tokens tokens;
 
 	@Autowired
+	private Apostas apostas;
+
+	@Autowired
 	private Usuarios usuarios;
 
 	@Autowired
@@ -51,9 +55,11 @@ public class UsuarioController {
 	private Mailer mailer;
 	
 	@RequestMapping("/dashboard")
-	public String menuInicial(@AuthenticationPrincipal UsuarioSistema usuario) {
-		
-		return "/usuario/menu_inicial";
+	public ModelAndView menuInicial(@AuthenticationPrincipal UsuarioSistema usuario) {
+		ModelAndView mv = new ModelAndView("/usuario/dashboard");
+
+		mv.addObject("apostas", apostas.findByStatus(true)); //pegando as apostas do dia (ou seja, as que estão com status = true)
+		return mv;
 	}
 	
 	@RequestMapping("/novo")
@@ -129,5 +135,71 @@ public class UsuarioController {
 
 		return ResponseEntity.badRequest().body("Erro");
 	}
+
+	@GetMapping("/resetPassword")
+	public ModelAndView resetPassword(Usuario usuario){
+		ModelAndView mv = new ModelAndView("usuario/esqueci_senha");
+
+		return mv;
+	}
+
+	@PostMapping("/resetPassword")
+	public ModelAndView sendResetPassword(Usuario usuario, HttpServletRequest request){
+		Optional<Usuario> usuarioOptional = usuarios.findByEmailIgnoreCase(usuario.getEmail());
+
+		if(usuarioOptional.isPresent() && usuarioOptional.get().getEmailValidation() == true) {
+			Optional<TokenValidation> token = tokens.findByUsuario(usuarioOptional.get());
+			mailer.emailResetPassword(usuarioOptional.get(), token.get().getToken(), request);
+			return resetPassword(usuario).addObject("mensagem", "Email de recuperação enviado para: " + usuarioOptional.get().getEmail());
+		}
+
+		else {
+			return resetPassword(usuario).addObject("mensagem", "Usuário não encontrado.");
+		}
+
+	}
+
+	@GetMapping("/email/confirmPassword")
+	public ModelAndView confirmPassword(@RequestParam("token") String tokenUsuario) {
+		Optional<TokenValidation> token = tokens.findByToken(tokenUsuario); //recuperando o TokenValidation do banco de dados a partir do token criado para o usuario
+
+		if(token.isPresent()){ //verificando se existia ao menos 1 TokenValidation no banco que condiz com o tokenUsuario (token criado para o usuario)
+
+			return new ModelAndView("/usuario/nova_senha").addObject("usuario", token.get().getUsuario());
+
+		}
+
+		return new ModelAndView("500");
+
+	}
+
+
+	@RequestMapping(value = "/email/confirmPassword", method = RequestMethod.POST)
+	public ModelAndView newPassword(Usuario usuario) {
+
+		ModelAndView mv = new ModelAndView("/usuario/nova_senha");
+
+		if(usuario.getSenha().length() < 6){
+            mv.addObject("mensagemErro", "A senha deve conter no mínimo 6 caracteres.");
+            return mv;
+        }
+
+		else if(!(usuario.getSenha().equals(usuario.getConfirmacaoSenha()))) {
+			mv.addObject("mensagemErro", "As senhas não conferem!");
+			return mv;
+		}
+
+		try {
+			CadastroUsuarioService.atualizar(usuario, usuario.getSenha());
+			mv.addObject("mensagemSucesso", "Senha atualizada com sucesso!");
+			return mv;
+		}
+		catch(Exception e) {
+			mv.addObject("mensagemErro", "Erro ao atualizar senha. Houve um erro inesperado.  Entre em contato conosco.");
+			return mv;
+		}
+
+	}
+
 
 }

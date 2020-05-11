@@ -32,7 +32,19 @@ public class CadastroUsuarioService {
 		usuario.setConfirmacaoSenha(usuario.getSenha());
 		usuarios.save(usuario);
 	}
-	
-	
+
+	@Transactional
+	public void atualizar(Usuario usuario, String novaSenha){
+		/*preciso receber o usuario completo com o findById porque o objeto
+		usuario que chega possui apenas a nova senha e o id como parâmetro não nulo.
+		Acontece que se não buscasse todos os parametros do usuario com o findById
+		o usuarios.save daria erro.
+		 */
+		usuario = usuarios.findById(usuario.getId());
+		usuario.setSenha(this.passwordEncoder.encode(novaSenha));
+		usuario.setConfirmacaoSenha(usuario.getSenha());
+		usuarios.save(usuario);
+
+	}
 	
 }

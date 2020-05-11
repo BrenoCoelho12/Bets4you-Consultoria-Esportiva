@@ -2,14 +2,14 @@ package com.desenvolvimento.pibetting.controller;
 
 import javax.validation.Valid;
 
+import com.desenvolvimento.pibetting.repository.Apostas;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.desenvolvimento.pibetting.model.Aposta;
@@ -23,6 +23,9 @@ public class ApostasController {
 	
 	@Autowired
 	private Paises paises;
+
+	@Autowired
+	private Apostas apostas;
 
 	@Autowired
 	private CadastroJogoService cadastroJogoService;
@@ -61,6 +64,31 @@ public class ApostasController {
 		}
 		
 		return new ModelAndView("redirect:/aposta/novo");
-	}	
+	}
+
+	@GetMapping(value = "/gerenciamentoApostas")
+	public ModelAndView gerenciamentoApostas(Model model){
+		ModelAndView mv = new ModelAndView("/aposta/gerenciar_apostas");
+
+		model.addAttribute("apostas", apostas.findAll());
+
+		return mv;
+
+	}
+
+	@PostMapping(value = "/gerenciamentoApostas", consumes = { MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody ResponseEntity<?> atualizarStatusAposta(@RequestBody @Valid Aposta aposta,  BindingResult result){
+
+		try{
+			cadastroApostaService.atualizarStatus(aposta);
+		}
+		catch(Exception e){
+			System.out.println("ERro ao atualizar status da aposta: " + e);
+		}
+
+		return ResponseEntity.ok("ok");
+
+	}
+
 		
 }

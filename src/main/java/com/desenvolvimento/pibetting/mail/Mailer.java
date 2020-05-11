@@ -1,5 +1,6 @@
 package com.desenvolvimento.pibetting.mail;
 
+import com.desenvolvimento.pibetting.model.TokenValidation;
 import com.desenvolvimento.pibetting.model.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,4 +62,36 @@ public class Mailer {
         }
 
     }
+
+    @Async
+    public void emailResetPassword(Usuario usuario, String token, HttpServletRequest request){
+
+        String url = request.getRequestURL().toString().replaceFirst(request.getRequestURI(), "") + "/pibetting/usuario/email/confirmPassword?token=" + token;
+        Context context = new Context();
+        context.setVariable("usuario", usuario);
+        context.setVariable("url", url);
+        //context.setVariable("logo", "logo");
+
+        try {
+            String email = thymeleaf.process("mail/confirmacao_senha", context);
+
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8"); //true porque irei adicionar imagens
+
+            helper.setFrom("breno3@ufrn.edu.br");
+            helper.setTo(usuario.getEmail());
+            helper.setSubject("Pibetting - Nova Senha");
+            helper.setText(email, true);
+
+            //helper.addInline("logo", new ClassPathResource("static/layout/img/brasil/avai.png"));
+
+            mailSender.send(mimeMessage);
+        }
+        catch (MessagingException e) {
+            logger.error("Erro enviando e-mail", e);
+        }
+
+    }
+
+
 }
