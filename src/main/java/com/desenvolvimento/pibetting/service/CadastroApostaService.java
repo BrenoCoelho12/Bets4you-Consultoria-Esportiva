@@ -1,5 +1,7 @@
 package com.desenvolvimento.pibetting.service;
 
+import com.desenvolvimento.pibetting.model.Jogo;
+import com.desenvolvimento.pibetting.service.exception.ImpossivelApagarEntidadeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,12 +9,18 @@ import org.springframework.transaction.annotation.Transactional;
 import com.desenvolvimento.pibetting.model.Aposta;
 import com.desenvolvimento.pibetting.repository.Apostas;
 
+import javax.persistence.PersistenceException;
+import java.util.List;
+
 @Service
 public class CadastroApostaService {
 
 	@Autowired
 	private Apostas apostas;
-	
+
+	@Autowired
+	private CadastroJogoService cadastroJogoService;
+
 	@Transactional
 	public Long salvar(Aposta aposta) {
 		
@@ -32,4 +40,21 @@ public class CadastroApostaService {
 		apostas.save(aposta); //atualizando a aposta para que tenha um novo status
 
 	}
+
+	@Transactional
+	public void excluir(Long codigoAposta) {
+		try{
+			List<Jogo> jogos = apostas.findById(codigoAposta).getJogos(); //pegando
+			for(int i = 0;i<jogos.size();i++){
+				cadastroJogoService.delete(jogos.get(i));
+			}
+			apostas.delete(codigoAposta);
+			apostas.flush();
+		}
+		catch(PersistenceException e){
+			throw new ImpossivelApagarEntidadeException("Impossível apagar aposta.");
+		}
+
+	}
+
 }

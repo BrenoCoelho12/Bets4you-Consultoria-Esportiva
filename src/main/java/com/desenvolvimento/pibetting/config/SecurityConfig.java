@@ -41,8 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/usuario/email/confirmRegistration")
 		.antMatchers("/usuario/email/reenviar")
 		.antMatchers("/usuario/resetPassword")
-		.antMatchers( "/usuario/email/confirmPassword");//redirecionada ao apertar o botao de confirmar email
-;
+		.antMatchers( "/usuario/email/confirmPassword")//redirecionada ao apertar o botao de confirmar email
+		.antMatchers(HttpMethod.DELETE, "/aposta/**");
+
 	}
 	
 	@Override

@@ -15,5 +15,7 @@ public interface Apostas extends JpaRepository<Aposta, Long> {
     public Aposta findById(Long id);
 
     public List<Aposta> findByStatus(Boolean status);
+
+    public List<Aposta> findByOrderByDataDesc();
 	
 }

@@ -1,8 +1,10 @@
 package com.desenvolvimento.pibetting.controller;
 
+import javax.persistence.PersistenceException;
 import javax.validation.Valid;
 
 import com.desenvolvimento.pibetting.repository.Apostas;
+import com.desenvolvimento.pibetting.service.exception.ImpossivelApagarEntidadeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -41,10 +43,10 @@ public class ApostasController {
 		return mv;
 	}
 	
-	@GetMapping("/pesquisar")
+	@GetMapping("/lista")
 	public ModelAndView pesquisarAposta() {
-		ModelAndView mv = new ModelAndView("/aposta/pesquisar_aposta");
-		
+		ModelAndView mv = new ModelAndView("/aposta/listagem_apostas");
+		mv.addObject("apostas", apostas.findByOrderByDataDesc());
 		return mv; 
 	}
 	
@@ -90,5 +92,16 @@ public class ApostasController {
 
 	}
 
-		
+	@DeleteMapping("/{codigo}")
+	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Long id) {
+		try{
+			cadastroApostaService.excluir(id);
+		}
+		catch(ImpossivelApagarEntidadeException e){
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok().build();
+	}
+
+
 }

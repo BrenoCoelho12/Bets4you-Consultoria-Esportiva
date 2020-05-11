@@ -18,5 +18,11 @@ public class CadastroJogoService {
 		
 		jogos.save(jogo);
 	}
-	
+
+	@Transactional
+	public void delete(Jogo jogo) {
+		jogos.delete(jogo);
+		jogos.flush();
+	}
+
 }

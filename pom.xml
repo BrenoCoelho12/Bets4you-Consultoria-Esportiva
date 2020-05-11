@@ -47,8 +47,10 @@
 		
 		<!-- Jackson - JSON -->
 		<jackson-core.version>2.7.5</jackson-core.version>
-		
-		
+
+		<!-- Thymeleaf extras data attribute -->
+		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
+
 		<!-- thumbnailator - Gerar Thumbnail -->
  		<!-- https://github.com/coobird/thumbnailator -->
 		<thumbnailator.version>0.4.8</thumbnailator.version>
@@ -268,6 +270,15 @@
 			<version>${javax.mail.version}</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- Thymeleaf extras data attribute -->
+		<dependency>
+			<groupId>com.github.mxab.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-data-attribute</artifactId>
+			<version>${thymeleaf-extras-data-attribute.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 	
 </project>

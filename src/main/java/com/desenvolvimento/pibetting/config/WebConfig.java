@@ -2,6 +2,7 @@ package com.desenvolvimento.pibetting.config;
 
 import java.util.Locale;
 
+import com.github.mxab.thymeleaf.extras.dataattribute.dialect.DataAttributeDialect;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -64,6 +65,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		
 		engine.addDialect(new LayoutDialect());
 		engine.addDialect(new PibettingDialect());
+		engine.addDialect(new DataAttributeDialect());
 		engine.addDialect(new SpringSecurityDialect());
 		return engine;
 	}
