@@ -1,16 +1,25 @@
 package com.desenvolvimento.pibetting.controller;
 
+import com.desenvolvimento.pibetting.repository.Planos;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
+
 @Controller
 public class IndexController {
+
+	@Autowired
+	private Planos planos;
 	
 	@RequestMapping("/")
-	public String index() {
-		return "index";
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView("index");
+
+		return mv;
 	}
 	
 	@GetMapping("/dicas")
@@ -28,8 +37,9 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/planos")
-	public String planos() {
-		
-		return "planos";
+	public ModelAndView planos() {
+		ModelAndView mv = new ModelAndView("planos");
+		mv.addObject("planos", planos.findAll());
+		return mv;
 	}
 }

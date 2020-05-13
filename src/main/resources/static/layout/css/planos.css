@@ -1,5 +1,5 @@
 body {
-	background-color: #FFF;
+	background-color: #f5f5f5;
 }
 
 .centralizarVerticalmente{
@@ -28,12 +28,9 @@ body {
 }
 
 .botao {
-	width: 130px;
+	width: 140px;
 }
 
-.letra {
-	font-size: 20px;
-}
 
 @media (max-width: 767px){
 

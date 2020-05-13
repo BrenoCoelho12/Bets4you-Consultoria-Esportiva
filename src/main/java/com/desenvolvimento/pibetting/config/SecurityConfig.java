@@ -42,7 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/usuario/email/reenviar")
 		.antMatchers("/usuario/resetPassword")
 		.antMatchers( "/usuario/email/confirmPassword")//redirecionada ao apertar o botao de confirmar email
-		.antMatchers(HttpMethod.DELETE, "/aposta/**");
+		.antMatchers(HttpMethod.DELETE, "/aposta/**")
+		.antMatchers(HttpMethod.DELETE, "/equipe/**");
 
 	}
 	

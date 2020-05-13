@@ -13,126 +13,44 @@
 
 	<div class = "container" layout:fragment="conteudo">
 		<div class="row">
-			<div class="col-md-3">
+
+			<div th:each="plano : ${planos}" class="col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body text-center">
+						<div class="row" th:if="${plano.renovacaoAutomatica}">
+							<span class="label label-default">RENOVAÇÃO AUTOMÁTICA</span>
+						</div>
 						<div class="row">
-							<span class="label label-warning">PLANO ANUAL (12 meses)</span>	
+							<span class="label label-warning" th:text="|${plano.descricao} (${plano.duracao})|"></span>
 						</div>
 						<div class = "row pricingCurrency">
 							<h1 class="titulo-preco">
-								<strong>R$19.99</strong>
+								<strong th:text="|R$ ${plano.valor}|"></strong>
 							</h1>
 						</div>
 						<div class = "row">
 							<strong>por mês</strong>
 						</div>
 						<div class = "row mt-25">
-							<span class="label label-danger">20% de desconto</span>
+							<span class="label label-danger" th:text="|${plano.desconto}% de desconto|"></span>
 						</div>
 						<div class = "mt-25 row">
 							<del class="text-danger">R$ 1000.00</del>
 							<span>650.00</span>
 						</div>
 						<div class = "row mt-25">
-							<button class="btn btn-primary botao" type="submit">ASSINE JÁ!</button>
+							<button class="btn btn-primary botao" type="submit">QUERO SER VIP!</button>
 						</div>
-					 </div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body text-center">
-						<div class="row">
-							<span class="label label-warning">PLANO SEMESTRAL (6 meses)</span>	
+						<div th:if="${plano.renovacaoAutomatica}" class = "row mt-25">
+							<span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;color: #101010">Cancele seu plano a qualquer momento.</span>
 						</div>
-						<div class = "row pricingCurrency">
-							<h1 class="titulo-preco">
-								<strong>R$24.99</strong>
-							</h1>
-						</div>
-						<div class = "row">
-							<strong>por mês</strong>
-						</div>
-						<div class = "row mt-25">
-							<span class="label label-danger">20% de desconto</span>
-						</div>
-						<div class = "mt-25 row">
-							<del class="text-danger">R$ 1000.00</del>
-							<span>650.00</span>
-						</div>
-						<div class = "row mt-25">
-							<button class="btn btn-primary botao" type="submit">ASSINE JÁ!</button>
-						</div>
-					 </div>
-				</div>
-			</div>
-
-
-			<div class="col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body text-center">
-						<div class="row">
-							<span class="label label-warning">PLANO TRIMESTRAL (3 meses)</span>	
-						</div>
-						<div class = "row pricingCurrency">
-							<h1 class="titulo-preco">
-								<strong>R$31.99</strong>
-							</h1>
-						</div>
-						<div class = "row">
-							<strong>por mês</strong>
-						</div>
-						<div class = "row mt-25">
-							<span class="label label-danger">20% de desconto</span>
-						</div>
-						<div class = "mt-25 row">
-							<del class="text-danger">R$ 1000.00</del>
-							<span>650.00</span>
-						</div>
-						<div class = "row mt-25">
-							<button class="btn btn-primary botao" type="submit">ASSINE JÁ!</button>
-						</div>
-					 </div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body text-center">
-						<div class="row">
-							<span class="label label-warning">PLANO MENSAL</span>	
-						</div>
-						<div class = "row pricingCurrency">
-							<h1 class="titulo-preco">
-								<strong>R$39.99</strong>
-							</h1>
-						</div>
-						<div class = "row">
-							<strong>por mês</strong>
-						</div>
-						<div class = "row mt-25">
-							<span class="label label-danger">20% de desconto</span>
-						</div>
-						<div class = "mt-25 row">
-							<del class="text-danger">R$ 1000.00</del>
-							<span>650.00</span>
-						</div>
-						<div class = "row mt-25">
-							<button class="btn btn-primary botao" type="submit">ASSINE JÁ!</button>
-						</div>
-					 </div>
+					</div>
 				</div>
 			</div>
 
 		  </div>
 
-		  <div class = "row mt-10">
-		  	<div class = "col-md-12 text-center">
-		  		<span class="label label-warning letra">Tenha acesso a todas as apostas VIP!</span>
-		  	</div>
-		  </div>
+
 
 		  <div class = "row">
 		  	<div class="col-md-12 text-justify mt-25">

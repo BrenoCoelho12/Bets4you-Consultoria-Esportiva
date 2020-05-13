@@ -19,6 +19,7 @@ Pibetting.DialogoExcluir = (function() {
         var botaoClicado = $(evento.currentTarget);
         var url = botaoClicado.data('url');
         var objeto = botaoClicado.data('objeto');
+        console.log(url);
 
         swal({
             title: 'Tem certeza?',

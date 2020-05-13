@@ -1,3 +1,13 @@
+body {
+	background-color: #f5f5f5;
+}
+
+.titulo {
+	font-family: 'Oswald', sans-serif;
+	font-size: 40px;
+	color:black;
+}
+
 .logotipo img {
 	height:30px;
 }
@@ -28,11 +38,9 @@
 	padding: 10px;
 }
 
-
-/*.linha-vertical {
-  height: 500px; /*Altura da linha
-  border-left: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.
-}*/
+.mt-25 {
+	margin-top: 25px;
+}
 
 @media (max-width: 767px){
 

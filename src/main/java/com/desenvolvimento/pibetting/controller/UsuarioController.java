@@ -58,7 +58,15 @@ public class UsuarioController {
 	public ModelAndView menuInicial(@AuthenticationPrincipal UsuarioSistema usuario) {
 		ModelAndView mv = new ModelAndView("/usuario/dashboard");
 
+		mv.addObject("usuarioVip", usuario.getUsuario().getAcessoVip());
 		mv.addObject("apostas", apostas.findByStatus(true)); //pegando as apostas do dia (ou seja, as que estão com status = true)
+		return mv;
+	}
+
+	@RequestMapping("/perfil")
+	public ModelAndView perfil(@AuthenticationPrincipal UsuarioSistema usuario){
+		ModelAndView mv = new ModelAndView("/usuario/perfil");
+		mv.addObject("usuario", usuario.getUsuario());
 		return mv;
 	}
 	

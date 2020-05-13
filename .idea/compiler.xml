@@ -13,4 +13,7 @@
       <module name="pibetting" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="TypeScriptCompiler">
+    <option name="recompileOnChanges" value="true" />
+  </component>
 </project>

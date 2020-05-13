@@ -9,17 +9,22 @@
   
   <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
   <link rel="stylesheet" th:href="@{/layout/css/menu_inicial.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald:wght@700&display=swap" rel="stylesheet">
   
 </head>
 
 <body>
   
   <div class="container" layout:fragment="conteudo">
-	<div class="row">
+	<div th:if="${usuarioVip}" class="row">
 
+		<div class="row text-center" th:if="${#lists.isEmpty(apostas)}">
+			<h1>Não há apostas para hoje.</h1>
+			<span class="glyphicon glyphicon-ban-circle" style="font-size: 400px; transform: translateY(30%);"></span>
+		</div>
 	  	<!-- Cada aposta tera uma div dessa abaixo, representado 1 panel -->
 	  	<div th:each="aposta, itemStat : ${apostas}"  class="panel panel-default col-xs-10 col-xs-offset-1 col-md-5 text-center">
-		  
+
 		  <div class="panel-heading text-center">
 		  	<span th:text="${aposta.descricaoAposta}"></span>
 		  </div>
@@ -28,7 +33,7 @@
 		  	
 		  	<div th:each="jogo : ${apostas[__itemStat.index__].jogos}" class="row">
 		  		<div>
-					<img th:src="@{/fotos/temp/{foto}(foto=${jogo.mandante.foto})}" class="logo-equipe"/>
+					<img th:src="@{/fotos/thumbnail.{foto}(foto=${jogo.mandante.foto})}" class="logo-equipe"/>
 		  		</div>
 		  		<div>
 		  			<span th:text="${jogo.mandante.nome}"><strong></strong></span>
@@ -61,6 +66,24 @@
 
 		</div>
 	</div>
+
+	  <div class="text-center" th:if="not ${usuarioVip}" style="transform: translateY(50%)">
+		  <div class="row">
+			  <div class="col-md-12">
+					<p class="titulo">Acesse nossos planos</p>
+			  </div>
+		  </div>
+
+		  <div class="row mt-25">
+			  <div class="col-md-12">
+				  <a class="btn btn-primary btn-lg" th:href="@{/planos}">
+					  Planos VIP
+				  </a>
+			  </div>
+		  </div>
+
+	  </div>
+
   </div>
 
 </body>

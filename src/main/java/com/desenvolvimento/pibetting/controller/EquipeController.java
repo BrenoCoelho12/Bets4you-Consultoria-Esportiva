@@ -4,17 +4,17 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.desenvolvimento.pibetting.repository.Equipes;
+import com.desenvolvimento.pibetting.repository.filter.EquipeFilter;
 import com.desenvolvimento.pibetting.service.exception.EquipeCadastradaException;
+import com.desenvolvimento.pibetting.service.exception.ImpossivelApagarEntidadeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,7 +22,6 @@ import com.desenvolvimento.pibetting.model.Equipe;
 import com.desenvolvimento.pibetting.model.Pais;
 import com.desenvolvimento.pibetting.repository.Paises;
 import com.desenvolvimento.pibetting.service.BuscarEquipesPorNacionalidade;
-//import com.desenvolvimento.pibetting.service.BuscarEquipesPorNacionalidade;
 import com.desenvolvimento.pibetting.service.CadastroEquipeService;
 
 @Controller 
@@ -37,6 +36,9 @@ public class EquipeController {
 	
 	@Autowired
 	private CadastroEquipeService cadastroEquipeService;
+
+	@Autowired
+	private Equipes equipes;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novaEquipe(Equipe equipe) { 
@@ -72,6 +74,25 @@ public class EquipeController {
 		List<Equipe> equipes;
 		equipes = buscarEquipesPorNacionalidade.buscarEquipesPorNacionalidade(pais);
 		return ResponseEntity.ok(equipes);
+	}
+
+	@GetMapping("/lista")
+	public ModelAndView pesquisarEquipe(EquipeFilter equipeFilter, BindingResult result){
+		ModelAndView mv = new ModelAndView("/equipe/listagem_equipes");
+		mv.addObject("paises", paises.findAll());
+		mv.addObject("equipes", equipes.filtrar(equipeFilter));
+		return mv;
+	}
+
+	@DeleteMapping("/{codigo}")
+	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Long id) {
+		try{
+			cadastroEquipeService.excluir(id);
+		}
+		catch(ImpossivelApagarEntidadeException e){
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok().build();
 	}
 
 }

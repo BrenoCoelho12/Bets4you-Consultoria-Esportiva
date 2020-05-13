@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:data="http://www.thymeleaf.org/extras/data"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout2"
+      xmlns:pibetting="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem das apostas</title>
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/sweetalert.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/listagem_equipes.css}">
+</head>
+
+<body>
+
+    <div class="container" layout:fragment="conteudo">
+
+        <form method="GET" th:object="${equipeFilter}">
+
+            <div class = "row">
+                <div class="col-md-5 col-sm-6 form-group">
+                    <label for="nacionalidadeEquipe" class="control-label">Nacionalidade:</label>
+                    <select id="nacionalidadeEquipe" class="form-control" th:field="*{nacionalidade}">
+                        <option value="">Selecione uma nacionalidade</option>
+                        <option th:each="pais : ${paises}" th:value="${pais.id}" th:text="${pais.nomePortugues}"></option>
+                    </select>
+                </div>
+                <div class="col-md-5 col-sm-6 form-group">
+                    <label for="nomeEquipe" class="control-label">Nome da equipe:</label>
+                    <input type="text" class="form-control" id="nomeEquipe" th:field="*{nome}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10 col-sm-12">
+                    <button type="submit" class="btn btn-primary pull-right">Pesquisar</button>
+                </div>
+            </div>
+
+
+        </form>
+
+        <table class="table table-hover table-style">
+            <thead>
+                <tr>
+                    <td class="table-equipes-col-escudos">Escudo</td>
+                    <td class="table-equipes-col-nome">Nome</td>
+                    <td class="table-equipes-col-nacionalidade">Nacionalidade</td>
+                    <td class="table-equipes-col-acoes">Ações</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="equipe : ${equipes}" style="height: 50px;">
+                    <td class="text-center">
+                        <img th:src="@{/fotos/thumbnail.{foto}(foto=${equipe.foto})}"/>
+                    </td>
+                    <td th:text="${equipe.nome}"></td>
+                    <td th:text="${equipe.nacionalidade.nomePortugues}"></td>
+                    <td class="text-center">
+                        <a class="btn  btn-link  btn-xs  js-tooltip" title="Editar">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
+                        <a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#"
+                           data:url="@{/equipe/{id}(id=${equipe.id})}"
+                           data:objeto="|Código: ${equipe.id}; Descrição: ${equipe.nome}|">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(equipes)}">
+                    <td colspan="4">Não há equipe</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <th:block layout:fragment="javascript-extra">
+        <script th:src="@{/javascripts/vendors/sweetalert.min.js}"></script>
+        <script th:src="@{/javascripts/dialogo-excluir.js}"></script>
+    </th:block>
+</body>
+</html>

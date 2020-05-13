@@ -16,7 +16,7 @@
           <span class="icon-bar"></span>
         </button>
           <a th:href="@{/usuario/dashboard}" class="navbar-brand">
-              <img alt="AlgaWorks" th:src="@{/images/logo_white.png}"/>
+              <img alt="AlgaWorks" th:src="@{/images/logoP.png}"/>
           </a>
       </div>
       
@@ -26,6 +26,7 @@
           <li><a th:href="@{/aposta/pesquisar}">Histórico de apostas</a></li>
           <li><a th:href="@{/usuario/dashboard}">Dashboard</a></li>
           <li><a th:href="@{/gestaoBanca}">Gestão de banca</a></li>
+          <li><a th:href="@{/planos}">Planos VIP</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" sec:authorize-url="/aposta/novo">
@@ -44,7 +45,7 @@
 	          <ul class="dropdown-menu">
 	            <li><a th:href="@{/equipe/novo}">Cadastrar equipe</a></li>
 	            <li role="separator" class="divider"></li>
-	            <li><a href="#">Listar Equipes</a></li>
+	            <li><a th:href="@{/equipe/lista}">Listar Equipes</a></li>
 	          </ul>
         	</li>
         	<li class="dropdown">
