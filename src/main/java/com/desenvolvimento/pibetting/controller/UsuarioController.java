@@ -6,10 +6,13 @@ import javax.validation.Valid;
 
 import com.desenvolvimento.pibetting.mail.Mailer;
 import com.desenvolvimento.pibetting.model.TokenValidation;
+import com.desenvolvimento.pibetting.model.UsuarioPlano;
 import com.desenvolvimento.pibetting.repository.Apostas;
 import com.desenvolvimento.pibetting.repository.Tokens;
 import com.desenvolvimento.pibetting.repository.Usuarios;
 import com.desenvolvimento.pibetting.service.CadastroTokenService;
+import com.desenvolvimento.pibetting.service.CadastroUsuarioPlanoService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +55,9 @@ public class UsuarioController {
 	private CadastroTokenService cadastroTokenService;
 
 	@Autowired
+	private CadastroUsuarioPlanoService cadastroUsuarioPlanoService;
+
+	@Autowired
 	private Mailer mailer;
 	
 	@RequestMapping("/dashboard")
@@ -61,6 +67,16 @@ public class UsuarioController {
 		mv.addObject("usuarioVip", usuario.getUsuario().getAcessoVip());
 		mv.addObject("apostas", apostas.findByStatus(true)); //pegando as apostas do dia (ou seja, as que estão com status = true)
 		return mv;
+	}
+
+	@PostMapping("/addPlano")
+	public void adicionarPlano(@Valid UsuarioPlano usuarioPlano, BindingResult result){
+
+		/* Compra Aprovada?*/
+		if(!result.hasErrors()){
+			cadastroUsuarioPlanoService.cadastrar(usuarioPlano);
+			CadastroUsuarioService.setUsuarioVip(usuarioPlano.getUsuario());
+		}
 	}
 
 	@RequestMapping("/perfil")
@@ -198,7 +214,7 @@ public class UsuarioController {
 		}
 
 		try {
-			CadastroUsuarioService.atualizar(usuario, usuario.getSenha());
+			CadastroUsuarioService.atualizarSenha(usuario, usuario.getSenha());
 			mv.addObject("mensagemSucesso", "Senha atualizada com sucesso!");
 			return mv;
 		}

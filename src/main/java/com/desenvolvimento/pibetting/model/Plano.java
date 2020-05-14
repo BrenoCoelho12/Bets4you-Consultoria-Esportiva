@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "plano")
@@ -24,10 +25,31 @@ public class Plano {
     private BigDecimal desconto;
 
     @NotBlank(message = "informe uma duração valida")
-    private String duracao;
+    private Long duracao;
 
     @NotNull(message = "informe se o plano tem renovação automática")
+    @Column(name = "renovacao_automatica")
     private Boolean renovacaoAutomatica;
+
+    @Column(name = "unidade_tempo")
+    @NotNull
+    private String unidadeTempo;
+
+    public Long getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(Long duracao) {
+        this.duracao = duracao;
+    }
+
+    public String getUnidadeTempo() {
+        return unidadeTempo;
+    }
+
+    public void setUnidadeTempo(String unidadeTempo) {
+        this.unidadeTempo = unidadeTempo;
+    }
 
     public Boolean getRenovacaoAutomatica() {
         return renovacaoAutomatica;
@@ -69,11 +91,4 @@ public class Plano {
         this.desconto = desconto;
     }
 
-    public String getDuracao() {
-        return duracao;
-    }
-
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
-    }
 }

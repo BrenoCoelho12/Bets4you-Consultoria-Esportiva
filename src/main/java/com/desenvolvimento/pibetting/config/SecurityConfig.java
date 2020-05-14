@@ -36,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/javascripts/**")
 		.antMatchers("/images/**")
 		.antMatchers("/") //pagina inicial
-		.antMatchers("/planos")//pagina de visualização dos planos vips
 		.antMatchers("/usuario/novo") //pagina de cadastro de usuário.antMatchers("/usuario/aguardandoConfirmacaoEmail")
 		.antMatchers(HttpMethod.GET, "/usuario/email/confirmRegistration")
 		.antMatchers("/usuario/email/reenviar")
