@@ -35,6 +35,12 @@ public class Plano {
     @NotNull
     private String unidadeTempo;
 
+
+
+    public BigDecimal getValorTotal() {
+        return valor.multiply(new BigDecimal(duracao));
+    }
+
     public Long getDuracao() {
         return duracao;
     }

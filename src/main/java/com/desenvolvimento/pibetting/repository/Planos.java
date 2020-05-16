@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Planos  extends JpaRepository<Plano, Long> {
 
-
+    public Plano findById(Long id);
 }

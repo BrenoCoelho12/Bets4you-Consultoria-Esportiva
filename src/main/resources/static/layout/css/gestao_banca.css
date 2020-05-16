@@ -1,0 +1,50 @@
+body {
+    background-color: #f5f5f5;
+
+}
+
+.titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    color:#007b5e;
+}
+
+.conteudo {
+    font-family: 'Jost', sans-serif;
+    /*font-weight: bold;*/
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.topico {
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    color:#007b5e;
+}
+
+.topico-calculadora {
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    color:black;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+ul {
+    font-family: 'Jost', sans-serif;
+    /*font-weight: bold;*/
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+}

@@ -36,13 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/javascripts/**")
 		.antMatchers("/images/**")
 		.antMatchers("/") //pagina inicial
-		.antMatchers("/usuario/novo") //pagina de cadastro de usuário.antMatchers("/usuario/aguardandoConfirmacaoEmail")
+		.antMatchers("/usuario/novo") //pagina de cadastro de usuário
 		.antMatchers(HttpMethod.GET, "/usuario/email/confirmRegistration")
 		.antMatchers("/usuario/email/reenviar")
 		.antMatchers("/usuario/resetPassword")
 		.antMatchers( "/usuario/email/confirmPassword")//redirecionada ao apertar o botao de confirmar email
 		.antMatchers(HttpMethod.DELETE, "/aposta/**")
-		.antMatchers(HttpMethod.DELETE, "/equipe/**");
+		.antMatchers(HttpMethod.DELETE, "/equipe/**")
+		.antMatchers("/gestao-de-banca");
 
 	}
 	
