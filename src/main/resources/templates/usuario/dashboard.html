@@ -23,7 +23,7 @@
 			<span class="glyphicon glyphicon-ban-circle" style="font-size: 400px; transform: translateY(30%);"></span>
 		</div>
 	  	<!-- Cada aposta tera uma div dessa abaixo, representado 1 panel -->
-	  	<div th:each="aposta, itemStat : ${apostas}"  class="panel panel-default col-xs-10 col-xs-offset-1 col-md-5 text-center">
+	  	<div th:each="aposta, itemStat : ${apostas}"  class="painel panel panel-default col-xs-10 col-xs-offset-1 col-md-5 text-center">
 
 		  <div class="panel-heading text-center">
 		  	<span th:text="${aposta.descricaoAposta}"></span>

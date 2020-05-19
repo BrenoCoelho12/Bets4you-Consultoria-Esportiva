@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout1">
+
+<head>
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/como_trabalhamos.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/footer.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/df0b61cc0c.js"></script>
+</head>
+
+<body>
+<div layout:fragment="conteudo">
+    <div class="container">
+
+        <div class="row">
+            <p class="titulo">COMO TRABALHAMOS?</p>
+        </div>
+
+        <div class="row mt-30">
+            <div class="col-md-10">
+
+                <p class="conteudo">
+                    Somos ums consultoria que oferece para membros VIP nossas análises sobre o mercado esportivo. Focados principalmente no futebol, nossos punters profissionais
+                    possuem mais de 5 anos de experiência com as análises esportivas. Acompanhamos diariamente todas as principais ligas do mundo:
+                    <span style="font-weight: bold">Campeonato inglês, Campeonato espanhol,
+                    Campeonato italiano, Campeonato brasileiro, Champions league, Europa league, libertadores e centenas de outras ligas.</span>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row mt-30">
+            <div class="col-md-10">
+
+                <p class="conteudo">
+                    Sabemos que o mercado esportivo cresce cada vez mais na vida dos investidores de todo mundo. A Bets4you deseja acompanhar
+                    esse crescimento e trazer para nossos membros VIP's análises da forma mais profissional e responsável possível.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row mt-30">
+            <div class="col-md-10">
+                <p class="conteudo">
+                    Para ter acesso as nossas análises basta <a th:href="@{/usuario/novo}">cadastrar-se</a> gratuitamente e escolher o plano VIP que mais se encaixar ao seu perfil!
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div th:replace="layout/fragments/footer :: footer_menu"></div>
+</div>
+</body>
+
+</html>

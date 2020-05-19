@@ -5,7 +5,9 @@ Pibetting.BotaoReenviarEmail = (function(){
     function BotaoReenviarEmail(){
         this.botaoReenviarEmail = $("#botaoReenviarEmail");
         this.token = $("#token")[0].innerText;  //valor do token
-        this.texto30Segundos = $("#botao30Segundos");
+        this.texto30Segundos = $("#texto30Segundos");
+        this.cronometro = $("#cronometro");
+        this.time = 60;
     }
 
     BotaoReenviarEmail.prototype.iniciar = function() {
@@ -14,21 +16,35 @@ Pibetting.BotaoReenviarEmail = (function(){
 
     function botaoReenviarEmail() {
 
-        this.botaoReenviarEmail.attr("disabled", "disabled");
-        this.texto30Segundos.removeClass("hidden");
-        setTimeout(temporizadorBotao.bind(this), 3000);
-
-        function temporizadorBotao(){
-            this.botaoReenviarEmail.prop('disabled', false);
-            this.texto30Segundos.addClass("hidden");
-        }
-
         $.ajax({
             url:  'http://localhost:8080/pibetting/usuario/email/reenviar',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ token: this.token })
         });
+
+        this.time = 60;
+
+        this.botaoReenviarEmail.addClass("hidden");
+        this.texto30Segundos.removeClass("hidden");
+        this.cronometro.removeClass("hidden");
+
+        var interval = setInterval(cronometro.bind(this), 1000);
+
+        function cronometro(){
+            if(this.time == 1){
+                this.botaoReenviarEmail.removeClass("hidden");
+                this.texto30Segundos.addClass("hidden");
+                this.cronometro.addClass("hidden");
+                clearInterval(interval);
+                this.cronometro.text(60);
+            }
+            else{
+                this.time--;
+                this.cronometro.text(this.time);
+            }
+        }
+
     }
 
 

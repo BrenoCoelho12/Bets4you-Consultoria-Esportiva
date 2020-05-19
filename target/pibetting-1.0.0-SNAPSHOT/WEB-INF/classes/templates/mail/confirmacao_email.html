@@ -2,24 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<body style="font-family: Arial; font-size: 14px;  border-radius: 4px;" >
+<head>
+
+</head>
+
+<body>
 
 		<!--  <p style="text-align: right">
 			<img src="../../static/img/logo-gray.png" th:src="|cid:${logo}|"/>
 		</p> -->
-	
-        <h1 style="font-size: 22px; text-align: center" th:text="|Olá, ${usuario.nome}. Seja bem vindo!|">Olá, teste. Seja bem vindo!</h1>
+        <div>
+            <header style="margin-top: 20px; margin-left: auto; margin-right: auto; text-align: center;">
+                <img src="../../static/images/logoG.png"  th:src="|cid:${logo}|">
+            </header>
+            <h1 style="font-size: 22px; text-align: center;" th:text="|Olá, ${usuario.nome}. Seja bem vindo!|">Olá, teste. Seja bem vindo!</h1>
 
-        <h4 style="text-align: center">Clique no link abaixo para confirmar seu email. Depois é só realizar login normalmente!</h4>
-        
-        <div style="text-align: center;">
-        	<a th:href="${url}" style="display: inline-block; padding: 6px 12px; margin-bottom: 0px; font-size: 14px; font-weight: 400; line-height: 1.4285; text-align: center; white-space: nowrap; cursor: pointer; user-select: none; background-image: none; border: 1px solid transparent; border-radius: 4px; touch-action: manipulation; color: #fff; background-color: #5bc0de; border-color: #46b8da; vertical-align: middle; " >
-                Confirmar email
-       		</a>
+            <h4 style="text-align: center;">Clique no link abaixo para confirmar seu email. Depois é só realizar login normalmente!</h4>
+
+            <div style="text-align: center;">
+                <a th:href="${url}" style=" display: inline-block; padding: 6px 12px; margin-bottom: 0px; font-size: 14px; font-weight: 400; line-height: 1.4285; text-align: center; white-space: nowrap; cursor: pointer; user-select: none; background-image: none; border: 1px solid transparent; border-radius: 4px; touch-action: manipulation; color: #fff; background-color: #5bc0de; border-color: #46b8da; vertical-align: middle; " >
+                    Confirmar email
+                </a>
+            </div>
+            <br>
+            <p style="font-size: 18px; font-weight: bold;">Obrigado!</p>
+            <p style="font-size: 18px;">Equipe Bets4you.</p>
+
         </div>
-        <br>
-        <p>Obrigado.</p>
-        <p>Equipe Pibetting!</p>
-        
+
 </body>
 </html>

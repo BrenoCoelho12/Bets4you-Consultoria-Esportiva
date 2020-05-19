@@ -37,6 +37,26 @@ public class IndexController {
 		
 		return mv;
 	}
+
+	@RequestMapping("/gestao-de-banca-usuario")
+	/*foi necessario criar esse método porque a aba de
+	gestão de banca encontra-se tanto na barra de navegação1
+	quanto na barra de navegação2... Se n houvessem 2 htmls
+	para barra de navegação, haveria problema na hora do redirecionamento
+	ao clicar no link da logo
+	 */
+	public ModelAndView gestaoBancaUsuarioLogado() {
+		ModelAndView mv = new ModelAndView("gestao_banca2");
+
+		return mv;
+	}
+
+	@RequestMapping("/como-trabalhamos")
+	public ModelAndView comoTrabalhamos() {
+		ModelAndView mv = new ModelAndView("como_trabalhamos");
+
+		return mv;
+	}
 	
 	@RequestMapping("/planos")
 	public ModelAndView planos(@AuthenticationPrincipal UsuarioSistema usuario) {

@@ -40,7 +40,7 @@ public class Mailer {
         Context context = new Context();
        context.setVariable("usuario", usuario);
        context.setVariable("url", url);
-       //context.setVariable("logo", "logo");
+       context.setVariable("logo", "logo");
 
         try {
             String email = thymeleaf.process("mail/confirmacao_email", context);
@@ -50,10 +50,10 @@ public class Mailer {
 
             helper.setFrom("breno3@ufrn.edu.br");
             helper.setTo(usuario.getEmail());
-            helper.setSubject("Pibetting - confirmacao de email");
+            helper.setSubject("Bets4you - confirmacao de email");
             helper.setText(email, true);
 
-            //helper.addInline("logo", new ClassPathResource("static/layout/img/brasil/avai.png"));
+            helper.addInline("logo", new ClassPathResource("static/images/logoG.png"));
 
             mailSender.send(mimeMessage);
         }
@@ -70,7 +70,7 @@ public class Mailer {
         Context context = new Context();
         context.setVariable("usuario", usuario);
         context.setVariable("url", url);
-        //context.setVariable("logo", "logo");
+        context.setVariable("logo", "logo");
 
         try {
             String email = thymeleaf.process("mail/confirmacao_senha", context);
@@ -80,10 +80,10 @@ public class Mailer {
 
             helper.setFrom("breno3@ufrn.edu.br");
             helper.setTo(usuario.getEmail());
-            helper.setSubject("Pibetting - Nova Senha");
+            helper.setSubject("Bets4you - Nova Senha");
             helper.setText(email, true);
 
-            //helper.addInline("logo", new ClassPathResource("static/layout/img/brasil/avai.png"));
+            helper.addInline("logo", new ClassPathResource("static/images/logoG.png"));
 
             mailSender.send(mimeMessage);
         }

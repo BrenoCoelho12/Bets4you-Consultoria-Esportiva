@@ -1,0 +1,19 @@
+body {
+    background: url("../../images/back-login.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.esqueci-senha-form {
+    margin-top: 40vh;
+    padding: 20px 30px;
+    background-color: rgba(0, 0, 0, .9);
+    color: #FFF;
+    transform: translateY(-50%);
+}
+
+.mt-20{
+    margin-top: 20px;
+}
