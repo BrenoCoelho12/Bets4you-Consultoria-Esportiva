@@ -21,7 +21,7 @@ Pibetting.CarregarEquipesPorPais = (function(){
 		 */
 		var idNacionalidadeMandante = this.nacionalidadeMandante["0"].value;
 		$.ajax({
-			url: 'http://localhost:8080/pibetting/equipe/buscar',
+			url: '/pibetting/equipe/buscar',
 			method: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({ id: idNacionalidadeMandante }),
@@ -49,7 +49,7 @@ Pibetting.CarregarEquipesPorPais = (function(){
 		var idNacionalidadeVisitante = this.nacionalidadeVisitante["0"].value; 
 		
 		$.ajax({
-			url: 'http://localhost:8080/pibetting/equipe/buscar',
+			url: '/pibetting/equipe/buscar',
 			method: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({ id: idNacionalidadeVisitante }),
@@ -85,69 +85,5 @@ Pibetting.CarregarEquipesPorPais = (function(){
 $(function(){
 	var carregarEquipesPorPais = new Pibetting.CarregarEquipesPorPais();
 	carregarEquipesPorPais.iniciar();
-	
-	
-	//SEM MODULE PATTERN 
-	/*
-	var nacionalidadeMandante = $(".js-nacionalidade-mandante");
-	var nacionalidadeVisitante = $(".js-nacionalidade-visitante");
-	
-	var mandante = $("#mandante");
-	var visitante = $("#visitante");
-	
-	this.nacionalidadeMandante.on('change', onChangeNacionalidadeMandante.bind(this));
-	this.nacionalidadeVisitante.on('change', onChangeNacionalidadeVisitante.bind(this));
-	
-	function onChangeNacionalidadeMandante() {
-		
-		var idNacionalidadeMandante = this.value;
-		
-		$.ajax({
-			url: 'http://localhost:8080/pibetting/equipe/buscar',
-			method: 'POST',
-			contentType: 'application/json',
-			data: JSON.stringify({ id: idNacionalidadeMandante }),
-			success: onReturnEquipesMandante
-		});
-
-	}
-	
-	function onReturnEquipesMandante(equipes) {
-		mandante.html('<option value="">Selecione</option>');
-		$.each(equipes, function(id, equipe) {
-            mandante.append($('<option>', {
-                value: equipe.id,
-                text: equipe.nome
-            }));
-        });
-
-	}
-	
-	function onChangeNacionalidadeVisitante() {
-		
-		var idNacionalidadeVisitante = this.value;
-		
-		$.ajax({
-			url: 'http://localhost:8080/pibetting/equipe/buscar',
-			method: 'POST',
-			contentType: 'application/json',
-			data: JSON.stringify({ id: idNacionalidadeVisitante }),
-			success: onReturnEquipesVisitante
-		});
-
-	}
-	
-	function onReturnEquipesVisitante(equipes) {
-		visitante.html('<option value="">Selecione</option>');
-		$.each(equipes, function(id, equipe) {
-            visitante.append($('<option>', {
-                value: equipe.id,
-                text: equipe.nome
-            }));
-        });
-
-	}
-	*/
-	
 		
 });

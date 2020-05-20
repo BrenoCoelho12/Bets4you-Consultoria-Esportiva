@@ -48,7 +48,7 @@ public class Mailer {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8"); //true porque irei adicionar imagens
 
-            helper.setFrom("breno3@ufrn.edu.br");
+            helper.setFrom("consultoriabets4you@gmail.com");
             helper.setTo(usuario.getEmail());
             helper.setSubject("Bets4you - confirmacao de email");
             helper.setText(email, true);
@@ -78,7 +78,7 @@ public class Mailer {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8"); //true porque irei adicionar imagens
 
-            helper.setFrom("breno3@ufrn.edu.br");
+            helper.setFrom("consultoriabets4you@gmail.com");
             helper.setTo(usuario.getEmail());
             helper.setSubject("Bets4you - Nova Senha");
             helper.setText(email, true);

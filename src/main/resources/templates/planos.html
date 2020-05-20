@@ -16,13 +16,13 @@
 		<div class="row">
 
 			<div th:each="plano : ${planos}" class="col-md-3">
-				<div class="panel panel-default">
+				<div class="panel panel-default" th:if="${plano.ativo}">
 					<div class="panel-body text-center">
 						<div class="row" th:if="${plano.renovacaoAutomatica}">
 							<span class="label label-default">RENOVAÇÃO AUTOMÁTICA</span>
 						</div>
 						<div class="row">
-							<span class="label label-warning" th:text="|${plano.descricao} (${plano.duracao})|"></span>
+							<span class="label label-warning" th:text="|${plano.descricao} (${plano.duracao} ${plano.unidadeTempo})|"></span>
 						</div>
 						<div class = "row pricingCurrency">
 							<h1 class="titulo-preco">
@@ -36,13 +36,14 @@
 							<span class="label label-danger" th:text="|${plano.desconto}% de desconto|"></span>
 						</div>
 						<div class = "mt-25 row">
-							<del class="text-danger">R$ 1000.00</del>
-							<span>650.00</span>
+							<del class="text-danger" th:text="${valorTotal}"></del>
+							<span th:text="${valorComDesconto}"></span>
 						</div>
+						<!--
 						<div class = "row mt-25">
 							<button class="btn btn-primary botao-plano" type="submit" data:plano ="${plano.id}" data:usuario="${usuario.id}">QUERO SER VIP!</button>
 						</div>
-
+						-->
 						<div th:if="${plano.renovacaoAutomatica}" class = "row mt-25">
 							<span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;color: #101010">Cancele seu plano a qualquer momento.</span>
 						</div>

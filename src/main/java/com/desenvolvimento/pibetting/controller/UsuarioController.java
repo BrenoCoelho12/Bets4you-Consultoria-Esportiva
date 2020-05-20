@@ -1,6 +1,7 @@
 package com.desenvolvimento.pibetting.controller;
 
 import javax.jws.WebParam;
+import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -29,6 +30,7 @@ import com.desenvolvimento.pibetting.repository.Paises;
 import com.desenvolvimento.pibetting.security.UsuarioSistema;
 import com.desenvolvimento.pibetting.service.CadastroUsuarioService;
 import com.desenvolvimento.pibetting.service.exception.EmailUsuarioCadastradoException;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.Optional;
 
@@ -69,20 +71,26 @@ public class UsuarioController {
 		return mv;
 	}
 
+	/*
 	@PostMapping("/addPlano")
 	public void adicionarPlano(@Valid UsuarioPlano usuarioPlano, BindingResult result){
 
-		/* Compra Aprovada?*/
+
 		if(!result.hasErrors()){
 			cadastroUsuarioPlanoService.cadastrar(usuarioPlano);
 			CadastroUsuarioService.setUsuarioVip(usuarioPlano.getUsuario());
 		}
-	}
+	}*/
 
 	@RequestMapping("/perfil")
 	public ModelAndView perfil(@AuthenticationPrincipal UsuarioSistema usuario){
 		ModelAndView mv = new ModelAndView("/usuario/perfil");
 		mv.addObject("usuario", usuario.getUsuario());
+
+		String descricaoPlano = cadastroUsuarioPlanoService.verificarPlanoUsuario(usuario.getUsuario());
+
+		mv.addObject("descricaoPlano", descricaoPlano);
+
 		return mv;
 	}
 	
@@ -129,19 +137,29 @@ public class UsuarioController {
 	@GetMapping("/email/confirmRegistration")
 	public String confirmacaoEmail(@RequestParam("token") String tokenUsuario) {
 		Optional<TokenValidation> token = tokens.findByToken(tokenUsuario); //recuperando o TokenValidation do banco de dados a partir do token criado para o usuario
+		TokenValidation tokenValidation = token.get(); //transformando o Optional<TokenValidation> em um Objeto TokenValidation
 
-		if(token.isPresent()){ //verificando se existia ao menos 1 TokenValidation no banco que condiz com o tokenUsuario (token criado para o usuario)
+		if(token.isPresent() && !tokenValidation.getUsuario().getEmailValidation()){ //verificando se existia ao menos 1 TokenValidation no banco que condiz com o tokenUsuario (token criado para o usuario) e se a coluna email_validation do usuário ainda é falsa
 
-			TokenValidation tokenValidation = token.get(); //transformando o Optional<TokenValidation> em um Objeto TokenValidation
+			try{
+				usuarios.atualizarEmailValidation(tokenValidation.getUsuario().getId());//atualizando o boolean token_validation para true, de modo a ter certeza que o usuario confirmou seu email
 
-			usuarios.atualizarEmailValidation(tokenValidation.getUsuario().getId());//atualizando o boolean token_validation para true, de modo a ter certeza que o usuario confirmou seu email
+				/* TEMPORÁRIO */
+				cadastroUsuarioPlanoService.addPlanoVip(tokenValidation.getUsuario());
+				usuarios.atualizarAcessoVip(tokenValidation.getUsuario().getId());
+				/* TEMPORÁRIO */
 
-			return "/usuario/token_valido"; //redirecionando para o html token_valido
+				return "/usuario/token_valido"; //redirecionando para o html token_valido
+			}
+			catch (PersistenceException e){
+				System.out.println(e);
+				return "500";
+			}
+
 
 		}
 
 		return "/usuario/token_invalido";
-
 
 	}
 

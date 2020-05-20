@@ -45,7 +45,7 @@
 		  			<span th:text="${jogo.visitante.nome}"><strong></strong></span>
 		  		</div>
 		  		<div>
-					<img th:src="@{/fotos/temp/{foto}(foto=${jogo.visitante.foto})}" class="logo-equipe"/>
+					<img th:src="@{/fotos/thumbnail.{foto}(foto=${jogo.visitante.foto})}" class="logo-equipe"/>
 		  		</div>
 		  		<div>
 		  			<h5><span th:text="${jogo.sugestao}" class="label label-default x"></span></h5>

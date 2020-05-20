@@ -21,7 +21,7 @@ Pibetting.CarregarEquipesPorPais = (function(){
 		 */
 		var idNacionalidadeMandante = this.nacionalidadeMandante["0"].value;
 		$.ajax({
-			url: 'http://localhost:8080/pibetting/equipe/buscar',
+			url: '/pibetting/equipe/buscar',
 			method: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({ id: idNacionalidadeMandante }),

@@ -17,7 +17,7 @@ Pibetting.BotaoReenviarEmail = (function(){
     function botaoReenviarEmail() {
 
         $.ajax({
-            url:  'http://localhost:8080/pibetting/usuario/email/reenviar',
+            url:  '/pibetting/usuario/email/reenviar',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ token: this.token })

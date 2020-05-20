@@ -35,10 +35,37 @@ public class Plano {
     @NotNull
     private String unidadeTempo;
 
+    @NotNull
+    private Boolean ativo = true;
 
+    @Transient
+    private BigDecimal valorTotal;
+
+    @Transient
+    private BigDecimal valorComDesconto;
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public BigDecimal getValorTotal() {
         return valor.multiply(new BigDecimal(duracao));
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public BigDecimal getValorComDesconto() {
+        return valor.subtract(valor.multiply(desconto.divide(new BigDecimal(100))));
+    }
+
+    public void setValorComDesconto(BigDecimal valorComDesconto) {
+        this.valorComDesconto = valorComDesconto;
     }
 
     public Long getDuracao() {

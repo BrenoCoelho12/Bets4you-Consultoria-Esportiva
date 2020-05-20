@@ -39,4 +39,12 @@ public class UsuariosImpl implements UsuariosQueries{
 
 	}
 
+	@Override
+	@Transactional
+	public void atualizarAcessoVip(Long idUsuario) {
+		manager.createQuery("UPDATE Usuario SET acesso_vip = true WHERE id = :id")
+				.setParameter("id", idUsuario)
+				.executeUpdate();
+	}
+
 }

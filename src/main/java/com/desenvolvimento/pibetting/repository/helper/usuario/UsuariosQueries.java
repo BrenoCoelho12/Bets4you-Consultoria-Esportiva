@@ -12,4 +12,7 @@ public interface UsuariosQueries {
 	public List<String> permissoes(Usuario usuario);
 
 	public void atualizarEmailValidation(Long idUsuario);
+
+	public void atualizarAcessoVip(Long idUsuario);
+
 }
