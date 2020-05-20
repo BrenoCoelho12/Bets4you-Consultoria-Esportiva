@@ -1,6 +1,6 @@
-var Pibetting = Pibetting || {};
+var Bets4you = Bets4you || {};
 
-Pibetting.CarregarEquipesPorPais = (function(){
+Bets4you.CarregarEquipesPorPais = (function(){
 	
 	function CarregarEquipesPorPais(){
 		this.nacionalidadeMandante = $(".js-nacionalidade-mandante");
@@ -21,7 +21,7 @@ Pibetting.CarregarEquipesPorPais = (function(){
 		 */
 		var idNacionalidadeMandante = this.nacionalidadeMandante["0"].value;
 		$.ajax({
-			url: '/pibetting/equipe/buscar',
+			url: '/bets4you/equipe/buscar',
 			method: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({ id: idNacionalidadeMandante }),
@@ -49,7 +49,7 @@ Pibetting.CarregarEquipesPorPais = (function(){
 		var idNacionalidadeVisitante = this.nacionalidadeVisitante["0"].value; 
 		
 		$.ajax({
-			url: '/pibetting/equipe/buscar',
+			url: '/bets4you/equipe/buscar',
 			method: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({ id: idNacionalidadeVisitante }),
@@ -83,7 +83,7 @@ Pibetting.CarregarEquipesPorPais = (function(){
 }());
 
 $(function(){
-	var carregarEquipesPorPais = new Pibetting.CarregarEquipesPorPais();
+	var carregarEquipesPorPais = new Bets4you.CarregarEquipesPorPais();
 	carregarEquipesPorPais.iniciar();
 		
 });

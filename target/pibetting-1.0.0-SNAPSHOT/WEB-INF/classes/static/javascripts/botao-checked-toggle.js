@@ -1,6 +1,6 @@
-var Pibetting = Pibetting || {};
+var Bets4you = Bets4you || {};
 
-Pibetting.ButtonCheckedToggle = (function(){
+Bets4you.ButtonCheckedToggle = (function(){
 
     function ButtonCheckedToggle() {
         this.buttonCheckedToggle = $("[data-idAposta]");
@@ -17,7 +17,7 @@ Pibetting.ButtonCheckedToggle = (function(){
             if($(this).prop('checked')){
                 /*se o checkbox for selecionado enviar um ajax passando o id da aposta e, também, o status da aposta como TRUE*/
                 $.ajax({
-                    url: '/pibetting/aposta/gerenciamentoApostas',
+                    url: '/bets4you/aposta/gerenciamentoApostas',
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(
@@ -31,7 +31,7 @@ Pibetting.ButtonCheckedToggle = (function(){
             else {
                 /*se o checkbox for desativado enviar um ajax passando o id da aposta e, também, o status da aposta como FALSE*/
                 $.ajax({
-                    url: '/pibetting/aposta/gerenciamentoApostas',
+                    url: '/bets4you/aposta/gerenciamentoApostas',
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(
@@ -57,7 +57,7 @@ Pibetting.ButtonCheckedToggle = (function(){
 
 $(function() {
 
-    var buttonCheckedToggle = new Pibetting.ButtonCheckedToggle();
+    var buttonCheckedToggle = new Bets4you.ButtonCheckedToggle();
     buttonCheckedToggle.iniciar();
 
 });

@@ -1,6 +1,6 @@
-var Pibetting = Pibetting || {};
+var Bets4you = Bets4you || {};
 
-Pibetting.BotaoReenviarEmail = (function(){
+Bets4you.BotaoReenviarEmail = (function(){
 
     function BotaoReenviarEmail(){
         this.botaoReenviarEmail = $("#botaoReenviarEmail");
@@ -17,7 +17,7 @@ Pibetting.BotaoReenviarEmail = (function(){
     function botaoReenviarEmail() {
 
         $.ajax({
-            url:  '/pibetting/usuario/email/reenviar',
+            url:  '/bets4you/usuario/email/reenviar',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ token: this.token })
@@ -54,7 +54,7 @@ Pibetting.BotaoReenviarEmail = (function(){
 
 $(function(){
 
-    var BotaoReenviarEmail = new Pibetting.BotaoReenviarEmail();
+    var BotaoReenviarEmail = new Bets4you.BotaoReenviarEmail();
     BotaoReenviarEmail.iniciar();
 
 });

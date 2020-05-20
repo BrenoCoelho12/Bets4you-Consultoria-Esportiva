@@ -1,6 +1,6 @@
-var Pibetting = Pibetting || {};
+var Bets4you = Bets4you || {};
 
-Pibetting.MaskMoney = (function(){
+Bets4you.MaskMoney = (function(){
 	
 	function MaskMoney(){
 		this.decimal = $('.js-decimal');
@@ -16,7 +16,7 @@ Pibetting.MaskMoney = (function(){
 }());
 
 $(function(){
-	var maskMoney = new Pibetting.MaskMoney();
+	var maskMoney = new Bets4you.MaskMoney();
 	maskMoney.enable();
 });
 

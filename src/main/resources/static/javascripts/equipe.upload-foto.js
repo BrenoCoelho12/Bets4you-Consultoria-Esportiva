@@ -1,6 +1,6 @@
-var Pibetting = Pibetting || {};
+var Bets4you = Bets4you || {};
 
-Pibetting.UploadFoto = (function() {
+Bets4you.UploadFoto = (function() {
 	
 	function UploadFoto() {
 		this.inputNomeFoto = $('input[name=foto]');
@@ -61,6 +61,6 @@ Pibetting.UploadFoto = (function() {
 })();
 
 $(function() {
-	var uploadFoto = new Pibetting.UploadFoto();
+	var uploadFoto = new Bets4you.UploadFoto();
 	uploadFoto.iniciar();
 });

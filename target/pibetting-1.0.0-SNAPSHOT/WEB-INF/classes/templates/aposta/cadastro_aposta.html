@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/layout2"
-	xmlns:pibetting="">
+	xmlns:bets4you="">
 	
 <head>
   <meta charset="UTF-8">
@@ -78,10 +78,10 @@
 		
 		<form method="POST" th:object="${aposta}" th:action="@{/aposta/novo}">
 			
-		<pibetting:message/>
+		<bets4you:message/>
 			
 			<div class="row">
-				<div class ="col-md-12" pibetting:classforerror="descricaoAposta">
+				<div class ="col-md-12" bets4you:classforerror="descricaoAposta">
 						<div class="form-group text-center pb-field-required">
 							<label for="tituloAposta" class="control-label">Informe a(s) liga(s) da aposta</label>
 							<input type="text" class="form-control" id="tituloAposta" th:field="*{descricaoAposta}">
@@ -99,7 +99,7 @@
 					</select>		
 				</div>
 				
-				<div class="col-md-3 pb-field-required" pibetting:classforerror="confianca">
+				<div class="col-md-3 pb-field-required" bets4you:classforerror="confianca">
 					<label for="confianca" class="control-label">Confiança</label>
 					<select id="confianca" class="form-control" th:field="*{confianca}">
 						<option value=""></option>
@@ -115,12 +115,12 @@
 					</select>
 				</div>
 				
-				<div class="col-md-3 pb-field-required" pibetting:classforerror="qtdJogos">
+				<div class="col-md-3 pb-field-required" bets4you:classforerror="qtdJogos">
 					<label for="quantidade-jogos" class="control-label">Quantidade de Jogos:</label>
 					<input type="text" class="form-control js-integer" id="qtdJogos" th:field="*{qtdJogos}" readonly>
 				</div>
 				
-				<div class="col-md-3 pb-field-required" pibetting:classforerror="odd">
+				<div class="col-md-3 pb-field-required" bets4you:classforerror="odd">
 					<label for="odd-aposta" class="control-label">Odd da aposta:</label>
 					<input type="text" class="form-control js-decimal" id="oddAposta" th:field="*{odd}" readonly>
 				</div>

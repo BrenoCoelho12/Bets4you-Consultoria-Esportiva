@@ -11,7 +11,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="pibetting" />
+          <element id="module-output" name="bets4you" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.0.RELEASE" />
@@ -89,7 +89,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/pibetting-1.0.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="pibetting/web/Web" />
+      <element id="javaee-facet-resources" facet="bets4you/web/Web" />
     </root>
   </artifact>
 </component>

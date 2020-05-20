@@ -1,6 +1,6 @@
-var Pibetting = Pibetting || {};
+var Bets4you = Bets4you || {};
 
-Pibetting.DialogoExcluir = (function() {
+Bets4you.DialogoExcluir = (function() {
 
     function DialogoExcluir() {
         this.exclusaoBtn = $('.js-exclusao-btn')
@@ -57,6 +57,6 @@ Pibetting.DialogoExcluir = (function() {
 }());
 
 $(function() {
-    var dialogo = new Pibetting.DialogoExcluir();
+    var dialogo = new Bets4you.DialogoExcluir();
     dialogo.iniciar();
 });

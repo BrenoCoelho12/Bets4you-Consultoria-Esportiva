@@ -3,8 +3,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>com.pibetting</groupId>
-	<artifactId>pibetting</artifactId>
+	<groupId>com.bets4you</groupId>
+	<artifactId>bets4you</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	
 	<packaging>war</packaging>
