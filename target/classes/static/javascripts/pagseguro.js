@@ -24,7 +24,7 @@ Bets4you.ApiPagseguro = (function() {
             }
         }
         $.ajax({
-            url:  'http://localhost:8080/pibetting/pagseguro-compra',
+            url:  '/pibetting/pagseguro-compra',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(json),

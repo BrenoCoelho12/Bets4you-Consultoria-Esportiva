@@ -17,7 +17,7 @@ Pibetting.ButtonCheckedToggle = (function(){
             if($(this).prop('checked')){
                 /*se o checkbox for selecionado enviar um ajax passando o id da aposta e, também, o status da aposta como TRUE*/
                 $.ajax({
-                    url: 'http://localhost:8080/pibetting/aposta/gerenciamentoApostas',
+                    url: '/pibetting/aposta/gerenciamentoApostas',
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(
@@ -31,7 +31,7 @@ Pibetting.ButtonCheckedToggle = (function(){
             else {
                 /*se o checkbox for desativado enviar um ajax passando o id da aposta e, também, o status da aposta como FALSE*/
                 $.ajax({
-                    url: 'http://localhost:8080/pibetting/aposta/gerenciamentoApostas',
+                    url: '/pibetting/aposta/gerenciamentoApostas',
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(
