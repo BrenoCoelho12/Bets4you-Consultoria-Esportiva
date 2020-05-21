@@ -66,10 +66,14 @@
 
 		<!-- Java Mail -->
 		<javax.mail.version>1.5.6</javax.mail.version>
+
+		<!-- AWS SDK - S3 -->
+		<aws-java-sdk-s3.version>1.10.77</aws-java-sdk-s3.version>
+
 	</properties>
 
 	<build>
-		<finalName>${artifactId}-${version}</finalName>
+		<finalName>${artifactId}</finalName>
 
 		<plugins>
 			
@@ -303,6 +307,12 @@
 			<version>4.3.2</version>
 		</dependency>
 
+		<!-- AWS SDK - S3 -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>${aws-java-sdk-s3.version}</version>
+		</dependency>
 
 	</dependencies>
 	

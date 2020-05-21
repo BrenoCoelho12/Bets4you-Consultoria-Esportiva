@@ -23,7 +23,7 @@
 			<span class="glyphicon glyphicon-ban-circle" style="font-size: 400px; transform: translateY(30%);"></span>
 		</div>
 	  	<!-- Cada aposta tera uma div dessa abaixo, representado 1 panel -->
-	  	<div th:each="aposta, itemStat : ${apostas}"  class="painel panel panel-default col-xs-10 col-xs-offset-1 col-md-5 text-center">
+	  	<div th:each="aposta, itemStat : ${apostas}"  class=" panel panel-default col-xs-10 col-xs-offset-1 col-md-5 text-center">
 
 		  <div class="panel-heading text-center">
 		  	<span th:text="${aposta.descricaoAposta}"></span>
@@ -33,7 +33,7 @@
 		  	
 		  	<div th:each="jogo : ${apostas[__itemStat.index__].jogos}" class="row">
 		  		<div>
-					<img th:src="@{/fotos/thumbnail.{foto}(foto=${jogo.mandante.foto})}" class="logo-equipe"/>
+					<img th:src="${jogo.mandante.urlThumbnailFoto}" class="logo-equipe"/>
 		  		</div>
 		  		<div>
 		  			<span th:text="${jogo.mandante.nome}"><strong></strong></span>
@@ -45,7 +45,7 @@
 		  			<span th:text="${jogo.visitante.nome}"><strong></strong></span>
 		  		</div>
 		  		<div>
-					<img th:src="@{/fotos/thumbnail.{foto}(foto=${jogo.visitante.foto})}" class="logo-equipe"/>
+					<img th:src="${jogo.visitante.urlThumbnailFoto}" class="logo-equipe"/>
 		  		</div>
 		  		<div>
 		  			<h5><span th:text="${jogo.sugestao}" class="label label-default x"></span></h5>

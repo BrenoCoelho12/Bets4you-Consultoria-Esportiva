@@ -5,7 +5,9 @@ Bets4you.UploadFoto = (function() {
 	function UploadFoto() {
 		this.inputNomeFoto = $('input[name=foto]');
 		this.inputContentType = $('input[name=contentType]');
-		
+
+		this.inputUrlFoto = $('input[name=urlFoto]');
+
 		this.htmlFotoCervejaTemplate = $('#foto-equipe').html();
 		this.template = Handlebars.compile(this.htmlFotoCervejaTemplate);
 		
@@ -28,16 +30,17 @@ Bets4you.UploadFoto = (function() {
 		UIkit.uploadDrop(this.uploadDrop, settings);
 		
 		if (this.inputNomeFoto.val()) {
-			onUploadCompleto.call(this, { nome:  this.inputNomeFoto.val(), contentType: this.inputContentType.val()});
+			onUploadCompleto.call(this, { nome:  this.inputNomeFoto.val(), contentType: this.inputContentType.val(), url: this.inputUrlFoto.val() });
 		}
 	}
 	
 	function onUploadCompleto(resposta) {
 		this.inputNomeFoto.val(resposta.nome);
 		this.inputContentType.val(resposta.contentType);
-		
+		this.inputUrlFoto.val(resposta.url);
+
 		this.uploadDrop.addClass('hidden');
-		var htmlFotoCerveja = this.template({nomeFoto: resposta.nome});
+		var htmlFotoCerveja = this.template({url: resposta.url});
 		this.containerFotoCerveja.append(htmlFotoCerveja);
 		
 		$('.js-remove-foto').on('click', onRemoverFoto.bind(this));

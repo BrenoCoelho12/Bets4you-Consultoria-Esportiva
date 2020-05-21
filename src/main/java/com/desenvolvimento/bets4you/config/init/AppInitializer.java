@@ -1,12 +1,10 @@
 package com.desenvolvimento.bets4you.config.init;
 
+import com.desenvolvimento.bets4you.config.*;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import javax.servlet.Filter;
-import com.desenvolvimento.bets4you.config.JPAConfig;
-import com.desenvolvimento.bets4you.config.MailConfig;
-import com.desenvolvimento.bets4you.config.SecurityConfig;
-import com.desenvolvimento.bets4you.config.ServiceConfig;
-import com.desenvolvimento.bets4you.config.WebConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.MultipartConfigElement;
 
@@ -15,7 +13,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class<?>[] { JPAConfig.class, ServiceConfig.class, SecurityConfig.class };
+		return new Class<?>[] { JPAConfig.class, ServiceConfig.class, SecurityConfig.class /*S3Config.class*/};
 	}
 
 	@Override
@@ -41,5 +39,9 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		registration.setMultipartConfig(new MultipartConfigElement(""));
 	}
 
-	
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+		super.onStartup(servletContext);
+		servletContext.setInitParameter("spring.profiles.default", "local");
+	}
 }

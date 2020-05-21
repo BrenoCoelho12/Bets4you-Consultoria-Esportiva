@@ -1,5 +1,6 @@
 package com.desenvolvimento.bets4you.controller;
 
+import javax.persistence.PersistenceException;
 import javax.validation.Valid;
 
 import com.desenvolvimento.bets4you.repository.Apostas;
@@ -56,13 +57,21 @@ public class ApostasController {
 		{	
 			return novaAposta(aposta);
 		}
-		
-		cadastroApostaService.salvar(aposta);
-		
-		for(int i = 0;i<aposta.getJogos().size();i++) {
-			aposta.getJogos().get(i).setCodAposta(aposta);
-			cadastroJogoService.salvar(aposta.getJogos().get(i));
+
+		try {
+			cadastroApostaService.salvar(aposta);
+
+			for(int i = 0;i<aposta.getJogos().size();i++) {
+				aposta.getJogos().get(i).setCodAposta(aposta);
+				cadastroJogoService.salvar(aposta.getJogos().get(i));
+			}
 		}
+		catch(PersistenceException p) {
+			ModelAndView mv = new ModelAndView("500");
+			System.out.println(p.getMessage());
+			return mv;
+		}
+
 		
 		return new ModelAndView("redirect:/aposta/novo");
 	}

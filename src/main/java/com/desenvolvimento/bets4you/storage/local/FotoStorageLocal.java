@@ -9,6 +9,8 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.desenvolvimento.bets4you.storage.FotoStorage;
@@ -16,15 +18,18 @@ import com.desenvolvimento.bets4you.storage.FotoStorage;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.name.Rename;
 
+import static java.nio.file.FileSystems.getDefault;
+
+@Profile("local")
+@Component
 public class FotoStorageLocal implements FotoStorage{
 	
 	private static final Logger logger = LoggerFactory.getLogger(FotoStorageLocal.class);
 	
 	private Path local;
-	private Path localTemporario;
 	
 	public FotoStorageLocal() {
-		this(FileSystems.getDefault().getPath(System.getenv("HOME"), "img-bets4you"));
+		this(getDefault().getPath(System.getenv("HOME"), "img-bets4you"));
 		
 	}
 	
@@ -34,62 +39,52 @@ public class FotoStorageLocal implements FotoStorage{
 	}
 		
 	@Override
-	public String salvarTemporariamente(MultipartFile[] files) { //aula 14.6
-		
+	public String salvar(MultipartFile[] files) { //aula 14.6
+
 		String novoNome = null;
-		
-		if(files != null && files.length > 0) {
-			
+		if (files != null && files.length > 0) {
 			MultipartFile arquivo = files[0];
 			novoNome = renomearArquivo(arquivo.getOriginalFilename());
 			try {
-				arquivo.transferTo(new File(this.localTemporario.toAbsolutePath().toString() + FileSystems.getDefault().getSeparator() + novoNome));;
-			}  catch(IOException e) {
-				throw new RuntimeException("Erro salvar foto na pasta temporária", e);
+				arquivo.transferTo(new File(this.local.toAbsolutePath().toString() + getDefault().getSeparator() + novoNome));
+			} catch (IOException e) {
+				throw new RuntimeException("Erro salvando a foto", e);
 			}
-		
-			
 		}
-		
-		return novoNome;
-		
-	}
-	
-	@Override
-	public byte[] recuperarFotoTemporaria(String nome) {
-		
+
 		try {
-			return Files.readAllBytes(this.localTemporario.resolve(nome));
+			Thumbnails.of(this.local.resolve(novoNome).toString()).size(65, 65).toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 		} catch (IOException e) {
-			throw new RuntimeException("Erro lendo a foto temporária", e);
+			throw new RuntimeException("Erro gerando thumbnail", e);
 		}
+
+		return novoNome;
 	}
-	
+
 	@Override
 	public byte[] recuperar(String nome) { //aula 15.3
 		try {
-			return Files.readAllBytes(this.local.resolve(nome));
+				return Files.readAllBytes(this.local.resolve(nome));
 		} catch (IOException e) {
 			throw new RuntimeException("Erro lendo a foto", e);
 		}
 	}
-	
+
 	@Override
-	public void salvar(String foto) { //aula 15.3
-		try {
-			Files.move(this.localTemporario.resolve(foto), this.local.resolve(foto)); 
-		} catch (IOException e) {
-			throw new RuntimeException("Erro movendo a foto para o destino final", e);
-		}
-		
-		try {
-			Thumbnails.of(this.local.resolve(foto).toString()).size(65, 65).toFiles(Rename.PREFIX_DOT_THUMBNAIL);
-		} catch (IOException e) {
-			throw new RuntimeException("Erro gerando thumbnail", e);
-		}
-		
+	public byte[] recuperarThumbnail(String fotoEquipe) {
+		return new byte[0];
 	}
-	
+
+	@Override
+	public void excluir(String foto) {
+
+	}
+
+	@Override
+	public String getUrl(String foto) {
+		return "http://localhost:8080/bets4you/fotos/" + foto;
+	}
+
 	private String renomearArquivo(String nomeOriginal) { //aula 14.7
 		String novoNome = UUID.randomUUID().toString() + "_" + nomeOriginal;
 		
@@ -103,13 +98,10 @@ public class FotoStorageLocal implements FotoStorage{
 	private void criarPastas() { //aula 14.5
 		try {
 			Files.createDirectories(this.local);
-			this.localTemporario = FileSystems.getDefault().getPath(this.local.toString(), "temp");
-			Files.createDirectories(this.localTemporario);
-			
+
 			if(logger.isDebugEnabled()) {
 				logger.debug("Pastas criadas para salvar foto...");
 				logger.debug("Pasta default: " + this.local.toAbsolutePath());
-				logger.debug("Pasta temporária: " + this.localTemporario.toAbsolutePath());
 			}
 		} catch (IOException e) {
 			throw new RuntimeException("");

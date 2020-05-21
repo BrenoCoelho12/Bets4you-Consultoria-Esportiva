@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.desenvolvimento.bets4you.model.Equipe;
 import com.desenvolvimento.bets4you.repository.Equipes;
-import com.desenvolvimento.bets4you.service.event.equipe.EquipeSalvaEvent;
 import com.desenvolvimento.bets4you.service.exception.EquipeCadastradaException;
 
 import javax.persistence.PersistenceException;
@@ -34,8 +33,6 @@ public class CadastroEquipeService {
 		}
 		
 		equipes.save(equipe);
-		
-		publisher.publishEvent(new EquipeSalvaEvent(equipe));
 		
 	}
 

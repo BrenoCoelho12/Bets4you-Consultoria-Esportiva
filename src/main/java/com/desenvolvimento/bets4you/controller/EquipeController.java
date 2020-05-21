@@ -2,6 +2,7 @@ package com.desenvolvimento.bets4you.controller;
 
 import java.util.List;
 
+import javax.persistence.PersistenceException;
 import javax.validation.Valid;
 
 import com.desenvolvimento.bets4you.repository.Equipes;
@@ -62,6 +63,10 @@ public class EquipeController {
 		catch(EquipeCadastradaException e) {
 			result.rejectValue("nome", e.getMessage(), e.getMessage());
 			return novaEquipe(equipe);
+		}
+		catch(PersistenceException p) {
+			ModelAndView mv = new ModelAndView("500");
+			return mv;
 		}
 
 		attributes.addFlashAttribute("mensagem", "Equipe cadastrada com sucesso.");
