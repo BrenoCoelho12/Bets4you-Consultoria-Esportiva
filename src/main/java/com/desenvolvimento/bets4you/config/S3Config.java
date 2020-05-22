@@ -15,16 +15,17 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 
 @Configuration
-@PropertySource(value = { "file://${HOME}/.bets4you-s3.properties" }, ignoreResourceNotFound = true)
+@PropertySource(value = { "file://${HOME}/bets4you-s3.properties" }, ignoreResourceNotFound = true)
 public class S3Config {
-
 
     @Autowired
     private Environment env;
 
     @Bean
     public AmazonS3 amazonS3(){
-        AWSCredentials credenciais = new BasicAWSCredentials(env.getProperty("B4Y_ACCESS_KEY_ID"), env.getProperty("B4Y_SECRET_ACCESS_KEY"));
+        AWSCredentials credenciais = new BasicAWSCredentials(
+                env.getProperty("AWS_ACCESS_KEY_ID"), env.getProperty("AWS_SECRET_ACCESS_KEY"));
+
         AmazonS3 amazonS3 = new AmazonS3Client(credenciais, new ClientConfiguration());
 
         Region regiao = Region.getRegion(Regions.SA_EAST_1);

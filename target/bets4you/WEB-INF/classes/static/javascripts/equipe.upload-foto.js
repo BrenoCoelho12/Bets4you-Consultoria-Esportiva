@@ -14,6 +14,7 @@ Bets4you.UploadFoto = (function() {
 		this.containerFotoCerveja = $('.js-container-foto-equipe');
 		
 		this.uploadDrop = $('#upload-drop');
+		this.imgLoading = $('.js-img-loading');
 	}
 	
 	UploadFoto.prototype.iniciar = function () {
@@ -23,7 +24,8 @@ Bets4you.UploadFoto = (function() {
 			allow: '*.(jpg|jpeg|png)',
 			action: this.containerFotoCerveja.data('url-fotos'),
 			complete: onUploadCompleto.bind(this),
-			beforeSend: adicionarCsrfToken
+			beforeSend: adicionarCsrfToken,
+			loadstart: onLoadStart.bind(this)
 		}
 		
 		UIkit.uploadSelect($('#upload-select'), settings);
@@ -33,11 +35,17 @@ Bets4you.UploadFoto = (function() {
 			onUploadCompleto.call(this, { nome:  this.inputNomeFoto.val(), contentType: this.inputContentType.val(), url: this.inputUrlFoto.val() });
 		}
 	}
+
+	function onLoadStart() {
+		this.imgLoading.removeClass('hidden');
+	}
 	
 	function onUploadCompleto(resposta) {
 		this.inputNomeFoto.val(resposta.nome);
 		this.inputContentType.val(resposta.contentType);
 		this.inputUrlFoto.val(resposta.url);
+
+		this.imgLoading.addClass('hidden');
 
 		this.uploadDrop.addClass('hidden');
 		var htmlFotoCerveja = this.template({url: resposta.url});

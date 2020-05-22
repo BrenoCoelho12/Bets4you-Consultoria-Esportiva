@@ -85,15 +85,6 @@ public class FotoStorageLocal implements FotoStorage{
 		return "http://localhost:8080/bets4you/fotos/" + foto;
 	}
 
-	private String renomearArquivo(String nomeOriginal) { //aula 14.7
-		String novoNome = UUID.randomUUID().toString() + "_" + nomeOriginal;
-		
-		if(logger.isDebugEnabled()) {
-			logger.debug(String.format("Nome original: %s, novo nome: %s", nomeOriginal, novoNome));
-		}
-		
-		return novoNome;
-	}
 
 	private void criarPastas() { //aula 14.5
 		try {

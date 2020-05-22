@@ -16,7 +16,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @ComponentScan(basePackageClasses = Mailer.class)
 @PropertySource({ "classpath:env/${ambiente:local}/mail-${ambiente:local}.properties" })
 //UTILIZAR A OPÇÃO ABAIXO CASO QUEIRA PEGAR OS VALORES DE DA MÁQUINA -> AULA 24.2
-//@PropertySource(value = { "file://${HOME}/.brewer-mail.properties" }, igno.reResourceNotFound = true) 
+//@PropertySource(value = { "file://${HOME}/.brewer-mail.properties" }, ignoreResourceNotFound = true)
 public class MailConfig {
 	
 	@Autowired

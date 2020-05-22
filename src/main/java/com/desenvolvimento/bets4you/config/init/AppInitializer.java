@@ -13,7 +13,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class<?>[] { JPAConfig.class, ServiceConfig.class, SecurityConfig.class /*S3Config.class*/};
+		return new Class<?>[] { JPAConfig.class, ServiceConfig.class, SecurityConfig.class, S3Config.class};
 	}
 
 	@Override
@@ -42,6 +42,6 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
-		servletContext.setInitParameter("spring.profiles.default", "local");
+		servletContext.setInitParameter("spring.profiles.default", "producao");
 	}
 }
