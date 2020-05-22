@@ -34,7 +34,7 @@ public class Mailer {
 
     @Async
     public void confirmacaoEmail(Usuario usuario, String token, HttpServletRequest request){ //aula 24.6
-        String url = request.getRequestURL().toString().replaceFirst(request.getRequestURI(), "") + "/bets4you/usuario/email/confirmRegistration?token=" + token;
+        String url = request.getRequestURL().toString().replaceFirst(request.getRequestURI(), "") + "/usuario/email/confirmRegistration?token=" + token;
         Context context = new Context();
        context.setVariable("usuario", usuario);
        context.setVariable("url", url);
@@ -64,7 +64,7 @@ public class Mailer {
     @Async
     public void emailResetPassword(Usuario usuario, String token, HttpServletRequest request){
 
-        String url = request.getRequestURL().toString().replaceFirst(request.getRequestURI(), "") + "/bets4you/usuario/email/confirmPassword?token=" + token;
+        String url = request.getRequestURL().toString().replaceFirst(request.getRequestURI(), "") + "/usuario/email/confirmPassword?token=" + token;
         Context context = new Context();
         context.setVariable("usuario", usuario);
         context.setVariable("url", url);

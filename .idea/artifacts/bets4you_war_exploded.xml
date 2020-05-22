@@ -50,6 +50,7 @@
           <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
           <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-java8:5.1.0.Final" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.39" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.10.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.12.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.0.RELEASE" />
@@ -89,6 +90,8 @@
           <element id="library" level="project" name="Maven: com.amazonaws:aws-java-sdk-core:1.10.77" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.5.3" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-dbcp2:2.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.4.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">
