@@ -6,9 +6,8 @@ body {
 	background-size: cover;
 }
 
-
 .usuario-form {
-	margin-top: 40vh;
+	margin-top: 350px;
 	padding: 20px 30px;
 	background-color: rgba(0, 0, 0, .9);
 	color: #FFF;
@@ -16,6 +15,16 @@ body {
 }
 .pb-field-required > .control-label:after {
 	content: "*";
+}
+
+@media (max-width: 767px){
+	.usuario-form {
+		margin-top: 350px;
+		padding: 20px 30px;
+		background-color: rgba(0, 0, 0, .9);
+		color: #FFF;
+		transform: translateY(-50%);
+	}
 }
 
 

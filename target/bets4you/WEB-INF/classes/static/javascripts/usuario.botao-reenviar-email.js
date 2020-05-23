@@ -17,7 +17,7 @@ Bets4you.BotaoReenviarEmail = (function(){
     function botaoReenviarEmail() {
 
         $.ajax({
-            url:  '/bets4you/usuario/email/reenviar',
+            url:  '/usuario/email/reenviar',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ token: this.token })

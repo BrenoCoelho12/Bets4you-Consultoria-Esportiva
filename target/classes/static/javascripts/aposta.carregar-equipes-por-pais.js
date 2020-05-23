@@ -21,7 +21,7 @@ Bets4you.CarregarEquipesPorPais = (function(){
 		 */
 		var idNacionalidadeMandante = this.nacionalidadeMandante["0"].value;
 		$.ajax({
-			url: '/bets4you/equipe/buscar',
+			url: '/equipe/buscar',
 			method: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({ id: idNacionalidadeMandante }),
@@ -49,7 +49,7 @@ Bets4you.CarregarEquipesPorPais = (function(){
 		var idNacionalidadeVisitante = this.nacionalidadeVisitante["0"].value; 
 		
 		$.ajax({
-			url: '/bets4you/equipe/buscar',
+			url: '/equipe/buscar',
 			method: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({ id: idNacionalidadeVisitante }),
