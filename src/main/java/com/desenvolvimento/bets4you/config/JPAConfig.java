@@ -43,15 +43,14 @@ public class JPAConfig {
 	@Profile("producao")
 	@Bean
 	public DataSource dataSourceProducao() throws URISyntaxException {
-		URI jdbUri = new URI(System.getenv("JAWSDB_URL"));
-
-		String username = jdbUri.getUserInfo().split(":")[0];
-		String password = jdbUri.getUserInfo().split(":")[1];
-		String port = String.valueOf(jdbUri.getPort());
-		String jdbUrl = "jdbc:mysql://" + jdbUri.getHost() + ":" + port + jdbUri.getPath();
+		String username = "breno";
+		String password = "#senha1234";
+		String port = "3306";
+		String database = "bets4you_producao";
+		String url = "jdbc:mysql://165.227.90.4" + ":" + port + "/" + database;
 
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setUrl(jdbUrl);
+		dataSource.setUrl(url);
 		dataSource.setUsername(username);
 		dataSource.setPassword(password);
 		dataSource.setInitialSize(10);
