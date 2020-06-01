@@ -18,7 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-@Profile("producao")
+@Profile("s3")
 @Component
 public class FotoStorageS3 implements FotoStorage {
 
