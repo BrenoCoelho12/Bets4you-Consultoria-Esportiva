@@ -19,8 +19,8 @@
 	<div th:if="${usuarioVip}" class="row">
 
 		<div class="row text-center" th:if="${#lists.isEmpty(apostas)}">
-			<h1>Não há apostas para hoje.</h1>
-			<span class="glyphicon glyphicon-ban-circle" style="font-size: 400px; transform: translateY(30%);"></span>
+			<h1 style="color: #ffffff">Não há apostas para hoje.</h1>
+			<span class="glyphicon glyphicon-ban-circle" style="font-size: 400px; transform: translateY(30%); color: #ffffff"></span>
 		</div>
 	  	<!-- Cada aposta tera uma div dessa abaixo, representado 1 panel -->
 	  	<div th:each="aposta, itemStat : ${apostas}"  class=" panel panel-default col-xs-10 col-xs-offset-1 col-md-5 text-center">
