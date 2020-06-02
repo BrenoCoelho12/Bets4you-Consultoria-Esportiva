@@ -139,12 +139,6 @@ public class UsuarioController {
 
 			try{
 				usuarios.atualizarEmailValidation(tokenValidation.getUsuario().getId());//atualizando o boolean token_validation para true, de modo a ter certeza que o usuario confirmou seu email
-
-				/* TEMPORÁRIO */
-				cadastroUsuarioPlanoService.addPlanoVip(tokenValidation.getUsuario());
-				usuarios.atualizarAcessoVip(tokenValidation.getUsuario().getId());
-				/* TEMPORÁRIO */
-
 				return "/usuario/token_valido"; //redirecionando para o html token_valido
 			}
 			catch (PersistenceException e){

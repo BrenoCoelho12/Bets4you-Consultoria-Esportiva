@@ -18,17 +18,16 @@ public class Plano {
     private String descricao;
 
     @NotNull(message = "informe um valor válido.")
-    private BigDecimal valor;
+    private BigDecimal valorMensal;
+
+    @NotNull(message = "informe um valor válido.")
+    private BigDecimal valorTotal;
 
     @NotNull(message = "informe um desconto válido.")
-    private BigDecimal desconto;
+    private Long desconto;
 
     @NotBlank(message = "informe uma duração valida")
     private Long duracao;
-
-    @NotNull(message = "informe se o plano tem renovação automática")
-    @Column(name = "renovacao_automatica")
-    private Boolean renovacaoAutomatica;
 
     @Column(name = "unidade_tempo")
     @NotNull
@@ -38,10 +37,39 @@ public class Plano {
     private Boolean ativo = true;
 
     @Transient
-    private BigDecimal valorTotal;
+    private BigDecimal valorSemDesconto;
 
-    @Transient
-    private BigDecimal valorComDesconto;
+    public BigDecimal getValorSemDesconto() {
+        return valorSemDesconto = new BigDecimal(duracao * 35.99).setScale(2, BigDecimal.ROUND_UP);
+    }
+
+    public void setValorSemDesconto(BigDecimal valorSemDesconto) {
+        this.valorSemDesconto = valorSemDesconto;
+    }
+
+    public BigDecimal getValorMensal() {
+        return valorMensal;
+    }
+
+    public void setValorMensal(BigDecimal valorMensal) {
+        this.valorMensal = valorMensal;
+    }
+
+    public Long getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(Long desconto) {
+        this.desconto = desconto;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 
     public Boolean getAtivo() {
         return ativo;
@@ -49,22 +77,6 @@ public class Plano {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
-    }
-
-    public BigDecimal getValorTotal() {
-        return valor.multiply(new BigDecimal(duracao));
-    }
-
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public BigDecimal getValorComDesconto() {
-        return valor.subtract(valor.multiply(desconto.divide(new BigDecimal(100))));
-    }
-
-    public void setValorComDesconto(BigDecimal valorComDesconto) {
-        this.valorComDesconto = valorComDesconto;
     }
 
     public Long getDuracao() {
@@ -83,14 +95,6 @@ public class Plano {
         this.unidadeTempo = unidadeTempo;
     }
 
-    public Boolean getRenovacaoAutomatica() {
-        return renovacaoAutomatica;
-    }
-
-    public void setRenovacaoAutomatica(Boolean renovacaoAutomatica) {
-        this.renovacaoAutomatica = renovacaoAutomatica;
-    }
-
     public Long getId() {
         return id;
     }
@@ -107,20 +111,5 @@ public class Plano {
         this.descricao = descricao;
     }
 
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public BigDecimal getDesconto() {
-        return desconto;
-    }
-
-    public void setDesconto(BigDecimal desconto) {
-        this.desconto = desconto;
-    }
 
 }

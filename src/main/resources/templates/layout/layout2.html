@@ -11,6 +11,7 @@
   <title>Bets4you - Consultoria</title>
   
   <link rel="stylesheet" th:href="@{/layout/css/barra_navegacao.css}">
+    <script src="https://kit.fontawesome.com/df0b61cc0c.js"></script>
   
 </head>
 
@@ -22,8 +23,12 @@
   <div th:replace="layout/fragments/BarraNavegacao2 :: barra_navegacao"></div>
   
   <div layout:fragment="conteudo">
-  	
   </div>
+
+    <a id="whatsapp-bubble" href="https://wa.me/5584996878281" style=" position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+        z-index:1000;" target="_blank">
+        <i style="margin-top:16px" class="fab fa-whatsapp"></i>
+    </a>
 	
 	<script th:src="@{/layout/js/jquery-2.2.4.min.js}"></script>
   	<script th:src="@{/layout/js/bootstrap.min.js}"></script>
