@@ -45,8 +45,10 @@ public class FotoStorageProducao implements FotoStorage{
         if (files != null && files.length > 0) {
             MultipartFile arquivo = files[0];
             novoNome = renomearArquivo(arquivo.getOriginalFilename());
+            File file = new File(this.local.toAbsolutePath().toString() + getDefault().getSeparator() + novoNome);
+            file.setExecutable(true);
             try {
-                arquivo.transferTo(new File(this.local.toAbsolutePath().toString() + getDefault().getSeparator() + novoNome));
+                arquivo.transferTo(file);
             } catch (IOException e) {
                 throw new RuntimeException("Erro salvando a foto", e);
             }
