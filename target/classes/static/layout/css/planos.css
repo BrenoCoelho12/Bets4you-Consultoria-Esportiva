@@ -31,10 +31,39 @@ body {
 	width: 140px;
 }
 
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+.titulo {
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
+	color:black;
+}
+
+.sub-titulo {
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	color:black;
+	font-weight: bold;
+}
 
 @media (max-width: 767px){
 
 	.letra {
 		font-size: 15px;
+	}
+
+	.titulo {
+		font-family: 'Oswald', sans-serif;
+		font-size: 15px;
+		color:black;
+	}
+
+	.sub-titulo {
+		font-family: 'Oswald', sans-serif;
+		font-size: 10px;
+		color:black;
+		font-weight: bold;
 	}
 }
