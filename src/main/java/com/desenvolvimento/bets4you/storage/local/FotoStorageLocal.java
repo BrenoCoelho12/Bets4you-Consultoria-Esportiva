@@ -46,7 +46,11 @@ public class FotoStorageLocal implements FotoStorage{
 			MultipartFile arquivo = files[0];
 			novoNome = renomearArquivo(arquivo.getOriginalFilename());
 			File file = new File(this.local.toAbsolutePath().toString() + getDefault().getSeparator() + novoNome);
+<<<<<<< HEAD
 			file.setExecutable(true);
+=======
+			file.setExecutable(true, false);
+>>>>>>> develop
 			try {
 				arquivo.transferTo(file);
 			} catch (IOException e) {

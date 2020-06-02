@@ -76,7 +76,7 @@ public class PagSeguroController {
                             .addItem(new PaymentItemBuilder()
                                     .withId("Consultoria plano " + plano.getId())
                                     .withDescription(plano.getDescricao())
-                                    .withAmount((plano.getValor().multiply(new BigDecimal(plano.getDuracao()))))
+                                    .withAmount(plano.getValorTotal())
                                     .withQuantity(1)));
 
             String code = registeredCheckout.getCheckoutCode();
