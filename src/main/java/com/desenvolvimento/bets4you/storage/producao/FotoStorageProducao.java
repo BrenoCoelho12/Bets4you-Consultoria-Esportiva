@@ -84,7 +84,7 @@ public class FotoStorageProducao implements FotoStorage{
 
     @Override
     public String getUrl(String foto) {
-        return "https://www.bets4you.com.br/fotos/" + foto;
+        return "https://bets4you.com.br/fotos/" + foto;
     }
 
 
