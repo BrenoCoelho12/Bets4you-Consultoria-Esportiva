@@ -30,7 +30,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li style="margin-top: 14px;">
                 <span th:if="${#authentication.principal.usuario.acessoVip}" class="label label-success">VIP ATIVO</span>
-                <span th:if="${not #authentication.principal.usuario.acessoVip}" class="label label-success">VIP INATIVO</span>
+                <span th:if="${not #authentication.principal.usuario.acessoVip}" class="label label-danger">VIP INATIVO</span>
             </li>
             <li class="dropdown" sec:authorize-url="/aposta/novo">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apostas<span class="caret"></span></a>
