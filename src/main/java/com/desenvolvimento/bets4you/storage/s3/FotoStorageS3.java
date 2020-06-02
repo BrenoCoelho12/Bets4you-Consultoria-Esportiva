@@ -1,3 +1,4 @@
+
 package com.desenvolvimento.bets4you.storage.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -18,7 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-@Profile("s3")
+@Profile("amazon")
 @Component
 public class FotoStorageS3 implements FotoStorage {
 
