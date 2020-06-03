@@ -61,7 +61,7 @@
 							<button class="btn btn-primary botao-plano" type="submit" data:plano ="${plano.id}" data:usuario="${usuario.id}">QUERO SER VIP!</button>
 						</div>
 						-->
-						<form action="https://bets4you.com.br/mercadopago-compra" method="POST">
+						<form th:action="@{/mercadopago-compra}" method="POST">
 							<script
 									src="https://www.mercadopago.com.br/integrations/v1/web-tokenize-checkout.js"
 									data-public-key="TEST-3c0096e5-acd0-4aa9-a7a2-fe8fe0e6854d"
