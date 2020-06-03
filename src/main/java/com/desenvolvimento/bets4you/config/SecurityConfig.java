@@ -44,8 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.DELETE, "/aposta/**")
 		.antMatchers(HttpMethod.DELETE, "/equipe/**")
 		.antMatchers("/gestao-de-banca")
-		.antMatchers("/como-trabalhamos");
-
+		.antMatchers("/como-trabalhamos")
+		.antMatchers(HttpMethod.POST, "/mercadopago-compra");
 	}
 	
 	@Override
