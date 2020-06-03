@@ -4,8 +4,13 @@ import br.com.uol.pagseguro.api.PagSeguro;
 import br.com.uol.pagseguro.api.PagSeguroEnv;
 import br.com.uol.pagseguro.api.checkout.CheckoutRegistrationBuilder;
 import br.com.uol.pagseguro.api.checkout.RegisteredCheckout;
+import br.com.uol.pagseguro.api.common.domain.Address;
+import br.com.uol.pagseguro.api.common.domain.Shipping;
+import br.com.uol.pagseguro.api.common.domain.ShippingType;
 import br.com.uol.pagseguro.api.common.domain.builder.*;
+import br.com.uol.pagseguro.api.common.domain.enums.ConfigKey;
 import br.com.uol.pagseguro.api.common.domain.enums.Currency;
+import br.com.uol.pagseguro.api.common.domain.enums.PaymentMethodGroup;
 import br.com.uol.pagseguro.api.credential.Credential;
 import br.com.uol.pagseguro.api.http.JSEHttpClient;
 import br.com.uol.pagseguro.api.utils.logging.SimpleLoggerFactory;
@@ -73,11 +78,29 @@ public class PagSeguroController {
                                             .withAreaCode("84")
                                             .withNumber("996878281")))
 
+
                             .addItem(new PaymentItemBuilder()
                                     .withId("Consultoria plano " + plano.getId())
                                     .withDescription(plano.getDescricao())
                                     .withAmount(plano.getValorTotal())
-                                    .withQuantity(1)));
+                                    .withQuantity(1))
+
+                            //Definindo formas de pagamento
+
+
+
+                            //definindo parcelamento
+                            .addPaymentMethodConfig(new PaymentMethodConfigBuilder()
+                                    .withPaymentMethod(new PaymentMethodBuilder()
+                                            .withGroup(PaymentMethodGroup.CREDIT_CARD)
+                                    )
+                                    .withConfig(new ConfigBuilder()
+                                            .withKey(ConfigKey.MAX_INSTALLMENTS_LIMIT)
+                                            .withValue(new BigDecimal(plano.getDuracao()))
+                                    )
+                            ));
+
+
 
             String code = registeredCheckout.getCheckoutCode();
             System.out.println(code);
@@ -89,34 +112,10 @@ public class PagSeguroController {
         }
         return null;
     }
-/*
-    private Credentials getCredentials() throws PagSeguroServiceException {
-        return new AccountCredentials(EMAIL, TOKEN);
-    }
 
-    private PaymentRequestItem getItem(Plano plano) {
-        PaymentRequestItem item = new PaymentRequestItem();
-        item.setId(String.valueOf(plano.getId()));
-        item.setAmount(plano.getValor().multiply(new BigDecimal(plano.getDuracao())));
-        item.setDescription(plano.getDescricao());
-        item.setQuantity(1);
-        item.
-
-        return item;
-    }
-
-
-    private Sender getSender(Usuario usuario) {
-        Sender sender = new Sender();
-        sender.setName(usuario.getNome());
-        sender.setEmail(usuario.getEmail());
-        sender.setPhone(new Phone("84", "996878281"));
-        return sender;
-    }
-*/
-    @PostMapping("/mercadopago")
+    @PostMapping("/mercadopago-compra")
     public void compraMercadoPago
-            (@AuthenticationPrincipal UsuarioSistema usuario, @PathVariable("idPlano") Long plano, HttpServletRequest request)
+            (@AuthenticationPrincipal UsuarioSistema usuario, HttpServletRequest request)
             throws MPException {
 
         String token = request.getParameter("token");
@@ -134,9 +133,15 @@ public class PagSeguroController {
                 .setPaymentMethodId(payment_method_id)
                 .setIssuerId(String.valueOf(issuer_id))
                 .setPayer(new Payer()
-                        .setEmail("consultoriabets4you@gmail.com"));
+                        .setEmail("ebrenocn@@gmail.com"));
         // Armazena e envia o pagamento
         payment.save();
+        System.out.println(payment.getStatus());
+        System.out.println(payment.getAuthorizationCode());
+        System.out.println(payment.getDateApproved());
+        System.out.println(payment.getTransactionAmount());
+        System.out.println(payment.getStatusDetail());
+        System.out.println(payment.getIssuerId());
 
     }
 }
