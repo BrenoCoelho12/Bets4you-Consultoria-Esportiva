@@ -6,9 +6,8 @@ import javax.validation.Valid;
 
 import com.desenvolvimento.bets4you.mail.Mailer;
 import com.desenvolvimento.bets4you.model.TokenValidation;
-import com.desenvolvimento.bets4you.repository.Apostas;
-import com.desenvolvimento.bets4you.repository.Tokens;
-import com.desenvolvimento.bets4you.repository.Usuarios;
+import com.desenvolvimento.bets4you.model.UsuarioPlano;
+import com.desenvolvimento.bets4you.repository.*;
 import com.desenvolvimento.bets4you.service.CadastroTokenService;
 import com.desenvolvimento.bets4you.service.CadastroUsuarioPlanoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.desenvolvimento.bets4you.model.Usuario;
-import com.desenvolvimento.bets4you.repository.Paises;
 import com.desenvolvimento.bets4you.security.UsuarioSistema;
 import com.desenvolvimento.bets4you.service.CadastroUsuarioService;
 import com.desenvolvimento.bets4you.service.exception.EmailUsuarioCadastradoException;
@@ -47,6 +45,9 @@ public class UsuarioController {
 	private Usuarios usuarios;
 
 	@Autowired
+	private UsuarioPlanos usuarioPlanos;
+
+	@Autowired
 	private CadastroUsuarioService CadastroUsuarioService;
 
 	@Autowired
@@ -62,29 +63,28 @@ public class UsuarioController {
 	public ModelAndView menuInicial(@AuthenticationPrincipal UsuarioSistema usuario) {
 		ModelAndView mv = new ModelAndView("/usuario/dashboard");
 
+		if(usuario.getUsuario().getAcessoVip() == true){
+			Boolean validade = cadastroUsuarioPlanoService.validadeDoPlanoVip(usuario.getUsuario());
+			if(validade == false){
+				usuario.getUsuario().setAcessoVip(false);
+			}
+		}
+
 		mv.addObject("usuarioVip", usuario.getUsuario().getAcessoVip());
 		mv.addObject("apostas", apostas.findByStatus(true)); //pegando as apostas do dia (ou seja, as que estão com status = true)
 		return mv;
 	}
-
-	/*
-	@PostMapping("/addPlano")
-	public void adicionarPlano(@Valid UsuarioPlano usuarioPlano, BindingResult result){
-
-
-		if(!result.hasErrors()){
-			cadastroUsuarioPlanoService.cadastrar(usuarioPlano);
-			CadastroUsuarioService.setUsuarioVip(usuarioPlano.getUsuario());
-		}
-	}*/
 
 	@RequestMapping("/perfil")
 	public ModelAndView perfil(@AuthenticationPrincipal UsuarioSistema usuario){
 		ModelAndView mv = new ModelAndView("/usuario/perfil");
 		mv.addObject("usuario", usuario.getUsuario());
 
-		String descricaoPlano = cadastroUsuarioPlanoService.verificarPlanoUsuario(usuario.getUsuario());
-
+		String descricaoPlano = cadastroUsuarioPlanoService.verificarPlanoUsuario(usuario.getUsuario()); //RETORNA "INATIVO" CASO O USUÁRIO NAO POSSUA UM PLANO VIP
+		if(usuario.getUsuario().getAcessoVip()){
+			String dataTerminoPlano = usuarioPlanos.findByUsuario(usuario.getUsuario()).get().getTerminoPlano().toString();
+			mv.addObject("dataTerminoPlano", dataTerminoPlano);
+		}
 		mv.addObject("descricaoPlano", descricaoPlano);
 
 		return mv;

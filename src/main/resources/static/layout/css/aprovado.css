@@ -1,0 +1,27 @@
+body {
+    background: url("../../images/back-login.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    color:#FFFFFF;
+    font-weight: bold;
+}
+
+.conteudo {
+    font-family: 'Jost', sans-serif;
+    /*font-weight: bold;*/
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: justify;
+    color: #ffffff;
+    font-weight: bold;
+}
+.mt-10 {
+    margin-top: 10px;
+}

@@ -1,0 +1,56 @@
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout2"
+      xmlns:bets4you="">
+
+<head>
+    <title>Bets4you - Bem vindo</title>
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/sweetalert.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/aprovado.css}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container" layout:fragment="conteudo">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center" style="margin-top: 150px; border-radius: 5px; height: 300px;">
+
+            <div class="row">
+                <i class="fa fa-check-square fa-5x" style="color: #FFFFFF" aria-hidden="true"></i>
+            </div>
+            <div class="row">
+                <span class="titulo"> Seja bem vindo a melhor consultoria esportiva do Brasil!</span>
+            </div>
+            <div class="row text-center mt-10">
+                <i style="color: #FFFFFF" class="fa fa-smile-o fa-5x" aria-hidden="true"></i>
+            </div>
+            <div class="row">
+                <span class="label laben-warning conteudo">Você precisa logar novamente para atualizar seu acesso vip.</span>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <a th:href="@{/logout}" class="btn btn-success btn-lg">Pagina de Login</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="javascript-extra">
+    <script th:src="@{/javascripts/vendors/sweetalert.min.js}"></script>
+    <script>
+        swal({
+            title: "Seja bem vindo, vip!",
+            text: '<i class="fa fa-check-square fa-5x text-center" aria-hidden="true"></i>',
+            html: true,
+            confirmButtonText: "Obrigado!",
+        });
+    </script>
+</th:block>
+
+</body>
+</html>

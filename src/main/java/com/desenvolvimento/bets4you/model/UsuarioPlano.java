@@ -30,6 +30,17 @@ public class UsuarioPlano {
     @NotNull
     private LocalDate terminoPlano = LocalDate.now();
 
+    @NotNull
+    private String status = "ATIVO";
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public LocalDate getInicioPlano() {
         return inicioPlano;
     }

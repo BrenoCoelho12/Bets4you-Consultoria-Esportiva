@@ -56,18 +56,16 @@
 						<div class = "row">
 							<strong><span th:text="|R$ ${plano.valorTotal} em até 12x|"></span></strong>
 						</div>
+						<div class = "row mt-25">
+							<a th:href="@{/detalhesPlano/{idPlano}(idPlano=${plano.id})}" class="btn btn-primary botao-plano">QUERO SER VIP!</a>
+						</div>
 						<!--
+						pagseguro
 						<div class = "row mt-25">
 							<button class="btn btn-primary botao-plano" type="submit" data:plano ="${plano.id}" data:usuario="${usuario.id}">QUERO SER VIP!</button>
 						</div>
 						-->
-						<form th:action="@{/mercadopago-compra}" method="POST">
-							<script
-									src="https://www.mercadopago.com.br/integrations/v1/web-tokenize-checkout.js"
-									data-public-key="TEST-3c0096e5-acd0-4aa9-a7a2-fe8fe0e6854d"
-									data-transaction-amount="10.00">
-							</script>
-						</form>
+
 					</div>
 				</div>
 			</div>
@@ -85,7 +83,7 @@
 			  </div>
 			  <div class="row col-md-12 text-center">
 				  <a type="button" href="https://www.instagram.com/bets4you_/?hl=pt-br" class="btn btn-primary ml-30"><i class="fab fa-instagram pr-1"></i> Instagram</a>
-				  <a type="button" href="https://wa.me/5584996878281" class="btn btn-success"><i class="fab fa-whatsapp pr-1"></i> Whatsapp</a>
+				  <a type="button" href="https://wa.me/5584996878281" class="btn btn-success"><i class="fab fa-whatsapp pr-1"></i>Whatsapp</a>
 			  </div>
 
 
@@ -106,11 +104,11 @@
 
 		</div>
 
-
+	<!--
 	<th:block layout:fragment="javascript-extra">
 		<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 		<script th:src="@{/javascripts/pagseguro.js}"></script>
 	</th:block>
-
+	-->
 </body>
 </html>

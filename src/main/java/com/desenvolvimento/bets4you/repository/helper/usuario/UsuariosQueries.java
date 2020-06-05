@@ -15,4 +15,6 @@ public interface UsuariosQueries {
 
 	public void atualizarAcessoVip(Long idUsuario);
 
+	public void retirarAcessoVip(Long idUsuario);
+
 }

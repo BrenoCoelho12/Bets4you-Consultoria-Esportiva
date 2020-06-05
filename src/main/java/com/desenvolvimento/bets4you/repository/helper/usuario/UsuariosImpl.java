@@ -47,4 +47,12 @@ public class UsuariosImpl implements UsuariosQueries{
 				.executeUpdate();
 	}
 
+	@Override
+	@Transactional
+	public void retirarAcessoVip(Long idUsuario) {
+		manager.createQuery("UPDATE Usuario SET acesso_vip = false WHERE id = :id")
+				.setParameter("id", idUsuario)
+				.executeUpdate();
+	}
+
 }
