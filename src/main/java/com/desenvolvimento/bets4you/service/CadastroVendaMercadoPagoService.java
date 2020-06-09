@@ -42,14 +42,14 @@ public class CadastroVendaMercadoPagoService {
 
             Payment payment = new Payment();
             payment
-                    .setTransactionAmount(149f)
+                    .setTransactionAmount((float) valorPlano)
                     .setToken(token)
                     .setDescription(plano.get().getDescricao())
                     .setInstallments(installments)
                     .setPaymentMethodId(payment_method_id)
                     .setIssuerId(issuer_id)
                     .setPayer(new Payer()
-                            .setEmail("ebrenocn@gmail.com"))
+                            .setEmail(usuarioLogado.get().getEmail()))
                     .setBinaryMode(true); //fazendo com que o resultado seja aprovado ou reprovado (excluindo as opções pendentes, analisando, etc).
             // Armazena e envia o pagamento
             payment.save();
