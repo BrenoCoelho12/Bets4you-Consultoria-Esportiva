@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 			.loginPage("/login") //informando qual a pagina de login
 			.permitAll()
-			.defaultSuccessUrl("/usuario/dashboard", true) //pagina de redirecionamento quando for feito login
+			.defaultSuccessUrl("/usuario/apostas", true) //pagina de redirecionamento quando for feito login
 				.and()
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //url de logout

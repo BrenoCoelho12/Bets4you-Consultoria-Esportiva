@@ -2,6 +2,7 @@ package com.desenvolvimento.bets4you.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class Aposta implements Serializable{
 	private Integer qtdJogos; 
 	
 	@Column(name="created_in")
-	private Date data = new Date();
+	private LocalDate data = LocalDate.now();
 
 	@NotNull(message = "Insira corretamente o(s) jogo(s).")
 	@Size(min = 1, message = "A quantidade mínima de jogos é 1.")
@@ -74,6 +75,17 @@ public class Aposta implements Serializable{
 
 	@Column(name = "status")
 	private Boolean status = false;
+
+	@Enumerated(EnumType.STRING)
+	private Situacao situacao = Situacao.PERDIDA;
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
 
 	public Boolean getStatus() {
 		return status;
@@ -137,9 +149,13 @@ public class Aposta implements Serializable{
 		this.modulo = modulo;
 	}
 
-	public Date getData() { return data; }
+	public LocalDate getData() {
+		return data;
+	}
 
-	public void setData(Date data) { this.data = data; }
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
 
 	@Override
 	public int hashCode() {

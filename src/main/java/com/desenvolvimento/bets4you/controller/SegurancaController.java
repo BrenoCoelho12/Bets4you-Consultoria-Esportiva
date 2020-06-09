@@ -13,7 +13,7 @@ public class SegurancaController {
 	public String login(@AuthenticationPrincipal User user) {
 	
 		if(user != null) {
-			return "redirect:/usuario/dashboard";
+			return "redirect:/usuario/apostas";
 		}
 		
 		return "login";

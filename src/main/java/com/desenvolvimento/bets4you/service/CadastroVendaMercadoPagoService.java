@@ -44,12 +44,13 @@ public class CadastroVendaMercadoPagoService {
             payment
                     .setTransactionAmount(149f)
                     .setToken(token)
-                    .setDescription("Durable Concrete Watch")
+                    .setDescription(plano.get().getDescricao())
                     .setInstallments(installments)
                     .setPaymentMethodId(payment_method_id)
                     .setIssuerId(issuer_id)
                     .setPayer(new Payer()
-                            .setEmail("ebrenocn@gmail.com"));
+                            .setEmail("ebrenocn@gmail.com"))
+                    .setBinaryMode(true); //fazendo com que o resultado seja aprovado ou reprovado (excluindo as opções pendentes, analisando, etc).
             // Armazena e envia o pagamento
             payment.save();
 

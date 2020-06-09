@@ -59,9 +59,9 @@ public class UsuarioController {
 	@Autowired
 	private Mailer mailer;
 	
-	@RequestMapping("/dashboard")
+	@RequestMapping("/apostas")
 	public ModelAndView menuInicial(@AuthenticationPrincipal UsuarioSistema usuario) {
-		ModelAndView mv = new ModelAndView("/usuario/dashboard");
+		ModelAndView mv = new ModelAndView("/usuario/apostas");
 
 		if(usuario.getUsuario().getAcessoVip() == true){
 			Boolean validade = cadastroUsuarioPlanoService.validadeDoPlanoVip(usuario.getUsuario());
