@@ -1,5 +1,6 @@
 package com.desenvolvimento.bets4you.repository.helper.aposta;
 
+import com.desenvolvimento.bets4you.dto.ApostaDTO;
 import com.desenvolvimento.bets4you.model.Aposta;
 import com.desenvolvimento.bets4you.model.Situacao;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,36 +43,37 @@ public class ApostasImpl implements ApostasQueries{
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Aposta> findByApostasDoMesAtual() {
-        return manager
-                .createQuery("from Aposta where month(data) = :mes", Aposta.class)
+    public List<ApostaDTO> findByApostasDoMesAtual() {
+        String jpql = "select new com.desenvolvimento.bets4you.dto.ApostaDTO(confianca, odd, data, situacao) "
+                + "from Aposta where month(data) = :mes";
+        List<ApostaDTO> apostasDoMes = manager.createQuery(jpql, ApostaDTO.class)
                 .setParameter("mes", MonthDay.now().getMonthValue())
                 .getResultList();
 
+        return apostasDoMes;
+    }
+
+    @Override
+    public List<ApostaDTO> findByApostasSituacaoPerdida() {
+        String jpql = "select new com.desenvolvimento.bets4you.dto.ApostaDTO(confianca, odd, data, situacao) "
+                + "from Aposta where month(data) = :mes and situacao = :situacao";
+        List<ApostaDTO> apostasPerdidas = manager.createQuery(jpql, ApostaDTO.class)
+                .setParameter("mes", MonthDay.now().getMonthValue())
+                .setParameter("situacao", Situacao.PERDIDA)
+                .getResultList();
+        return apostasPerdidas;
 
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Aposta> findByApostasSituacaoPerdida() {
-         return manager
-                 .createQuery("from Aposta where month(data) = :mes and situacao = :situacao", Aposta.class)
-                 .setParameter("mes", MonthDay.now().getMonthValue())
-                 .setParameter("situacao", Situacao.PERDIDA)
-                 .getResultList();
-
-
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Aposta> findByApostasSituacaoVencida() {
-        return manager
-                .createQuery("from Aposta where month(data) = :mes and situacao = :situacao", Aposta.class)
+    public List<ApostaDTO> findByApostasSituacaoVencida() {
+        String jpql = "select new com.desenvolvimento.bets4you.dto.ApostaDTO(confianca, odd, data, situacao) "
+                + "from Aposta where month(data) = :mes and situacao = :situacao";
+        List<ApostaDTO> apostasVencidas = manager.createQuery(jpql, ApostaDTO.class)
                 .setParameter("mes", MonthDay.now().getMonthValue())
                 .setParameter("situacao", Situacao.VENCIDA)
                 .getResultList();
+        return apostasVencidas;
     }
 
 }
