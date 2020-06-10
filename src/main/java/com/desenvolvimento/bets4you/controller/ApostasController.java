@@ -46,7 +46,7 @@ public class ApostasController {
 	@GetMapping("/lista")
 	public ModelAndView pesquisarAposta() {
 		ModelAndView mv = new ModelAndView("/aposta/listagem_apostas");
-		mv.addObject("apostas", apostas.findByOrderByDataDesc());
+		mv.addObject("apostas", apostas.findByApostasDoMesAtualDesc());
 		return mv; 
 	}
 	
@@ -80,7 +80,7 @@ public class ApostasController {
 	public ModelAndView gerenciamentoApostas(Model model){
 		ModelAndView mv = new ModelAndView("/aposta/gerenciar_apostas");
 
-		model.addAttribute("apostas", apostas.findAll());
+		model.addAttribute("apostas", apostas.findByApostasDoMesAtualDesc());
 
 		return mv;
 
@@ -94,6 +94,20 @@ public class ApostasController {
 		}
 		catch(Exception e){
 			System.out.println("ERro ao atualizar status da aposta: " + e);
+		}
+
+		return ResponseEntity.ok("ok");
+
+	}
+
+	@PostMapping(value = "/atualizarSituacao", consumes = { MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody ResponseEntity<?> atualizarSituacaoAposta(@RequestBody @Valid Aposta aposta,  BindingResult result){
+
+		try{
+			cadastroApostaService.atualizarSituacao(aposta);
+		}
+		catch(Exception e){
+			System.out.println("ERro ao atualizar situacao da aposta: " + e);
 		}
 
 		return ResponseEntity.ok("ok");

@@ -3,6 +3,7 @@ package com.desenvolvimento.bets4you.repository.helper.aposta;
 import com.desenvolvimento.bets4you.dto.ApostaDTO;
 import com.desenvolvimento.bets4you.model.Aposta;
 import com.desenvolvimento.bets4you.model.Situacao;
+import com.desenvolvimento.bets4you.model.Usuario;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -51,6 +52,14 @@ public class ApostasImpl implements ApostasQueries{
                 .getResultList();
 
         return apostasDoMes;
+    }
+
+    @Override
+    public List<Aposta> findByApostasDoMesAtualDesc() {
+        return manager
+                .createQuery("from Aposta where month(data) = :mes ORDER BY data DESC", Aposta.class)
+                .setParameter("mes", MonthDay.now().getMonthValue())
+                .getResultList();
     }
 
     @Override
