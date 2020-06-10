@@ -17,5 +17,7 @@ public interface ApostasQueries {
 
     List<ApostaDTO> findByApostasDoMesAtual();
 
+    List<Aposta> findByApostasDoMesAtualDesc();
+
     List<ApostaDTO> findByApostasSituacaoPerdida();
 }

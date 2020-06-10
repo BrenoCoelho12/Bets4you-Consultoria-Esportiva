@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Hashtable;
@@ -28,8 +29,9 @@ public class DashboardController {
         ModelAndView mv = new ModelAndView("/usuario/dashboard");
         mv.addObject("totalApostasNoMes", apostas.totalApostasNoMes());
         mv.addObject("oddMediaNoMes", apostas.oddMediaNoMes());
-        mv.addObject("rentabilidadeNoMes", dashboardService.calculoRentabilidadeNoMes().setScale(2));
+        mv.addObject("rentabilidadeNoMes", dashboardService.calculoRentabilidadeNoMes().setScale(2, RoundingMode.HALF_UP));
         mv.addObject("mesAtual", LocalDate.now().getMonth().getDisplayName(TextStyle.FULL, new Locale("pt")));
+
         return mv;
     }
 
