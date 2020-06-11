@@ -36,11 +36,22 @@ public class Plano {
     @NotNull
     private Boolean ativo = true;
 
+    @NotNull
+    private Long qtdParcelas;
+
     @Transient
     private BigDecimal valorSemDesconto;
 
+    public Long getQtdParcelas() {
+        return qtdParcelas;
+    }
+
+    public void setQtdParcelas(Long qtdParcelas) {
+        this.qtdParcelas = qtdParcelas;
+    }
+
     public BigDecimal getValorSemDesconto() {
-        return valorSemDesconto = new BigDecimal(duracao * 35.99).setScale(2, BigDecimal.ROUND_UP);
+        return valorSemDesconto = new BigDecimal(duracao * 29.99).setScale(2, BigDecimal.ROUND_UP);
     }
 
     public void setValorSemDesconto(BigDecimal valorSemDesconto) {

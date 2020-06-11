@@ -45,16 +45,16 @@
 						<div class = "row">
 							<strong>por mês</strong>
 						</div>
-						<div class = "row mt-25">
+						<div th:if="${plano.id != 1}" class = "row mt-25">
 							<span class="label label-danger" th:text="|${plano.desconto}% de desconto|"></span>
 						</div>
 
-						<div class = "row mt-25">
+						<div th:if="${plano.id != 1}" class="row mt-25">
 							<del class="text-danger" th:text="|R$ ${plano.valorSemDesconto}|"></del>
 						</div>
 
 						<div class = "row">
-							<strong><span th:text="|R$ ${plano.valorTotal} em até 12x|"></span></strong>
+							<strong><span th:text="|R$ ${plano.valorTotal} em até ${plano.qtdParcelas}x|"></span></strong>
 						</div>
 						<div class = "row mt-25">
 							<a th:href="@{/detalhesPlano/{idPlano}(idPlano=${plano.id})}" class="btn btn-primary botao-plano">QUERO SER VIP!</a>
