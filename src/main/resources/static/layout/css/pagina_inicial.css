@@ -157,3 +157,16 @@ body{
 		font-weight: bold;
 	}
 }
+
+@media (min-width: 767px) {
+	.btn-whats {
+		margin-top: 16px;
+		margin-left: 31px;
+	}
+}
+
+@media (min-width: 1023px){
+	.btn-whats {
+		margin-bottom: 18px;
+	}
+}

@@ -12,3 +12,17 @@
 	margin-top: 8px;
 	width: auto;
 }
+
+@media (min-width: 767px) {
+	li {
+		font-size: 11px;
+	}
+
+}
+
+@media (min-width: 1023px) {
+	li {
+		font-size: 15px;
+	}
+
+}
