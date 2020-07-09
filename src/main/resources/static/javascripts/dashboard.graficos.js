@@ -4,11 +4,10 @@ Bets4you.GraficoRentabilidadeNoMes = (function() {
 
     function GraficoRentabilidadeNoMes() {
         now = new Date;
-        this.meses = new Array ("janeiro", "fevereiro", "março", "abril", "Maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+        this.meses = new Array ("janeiro", "fevereiro", "março", "abril", "Maio", "junho", "julho", "agosto", "outubro", "novembro", "dezembro")
         this.rentabilidadePorDia = $('#graficoRentabilidadePorDia')[0].getContext('2d');
         this.rentabilidadeDiaADia = $('#graficoRentabilidadeDiaADia')[0].getContext('2d');
         this.mesAtual = this.meses[now.getMonth()].toUpperCase();
-
     }
 
     GraficoRentabilidadeNoMes.prototype.iniciar = function() {
