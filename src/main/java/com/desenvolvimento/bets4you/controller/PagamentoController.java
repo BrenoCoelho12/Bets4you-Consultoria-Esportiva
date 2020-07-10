@@ -76,7 +76,7 @@ public class PagamentoController {
                                     .withName(usuario.getNome())
                                     .withPhone(new PhoneBuilder()
                                             .withAreaCode("84")
-                                            .withNumber("5584998340782")))
+                                            .withNumber("5584998372941")))
 
 
                             .addItem(new PaymentItemBuilder()
