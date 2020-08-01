@@ -1,0 +1,29 @@
+body {
+    background-color: #f5f5f5;
+
+}
+
+.titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    color:#007b5e;
+}
+
+.conteudo {
+    font-family: 'Jost', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt-20 {
+    margin-top: 25px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}

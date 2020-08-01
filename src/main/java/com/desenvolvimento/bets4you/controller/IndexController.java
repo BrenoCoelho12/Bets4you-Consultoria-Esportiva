@@ -5,6 +5,7 @@ import com.desenvolvimento.bets4you.security.UsuarioSistema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,6 +64,20 @@ public class IndexController {
 		ModelAndView mv = new ModelAndView("planos");
 		mv.addObject("planos", planos.findAll());
 		mv.addObject("usuario", usuario.getUsuario());
+		return mv;
+	}
+
+	@RequestMapping("/bookmakers")
+	public ModelAndView bookMakers(){
+		ModelAndView mv = new ModelAndView("bookmakers");
+
+		return mv;
+	}
+
+	@RequestMapping("/grupo-free")
+	public ModelAndView grupoTelegram(){
+		ModelAndView mv = new ModelAndView("grupo_telegram");
+
 		return mv;
 	}
 }

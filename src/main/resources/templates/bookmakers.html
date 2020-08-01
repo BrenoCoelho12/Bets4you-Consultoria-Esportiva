@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout1">
+
+<head>
+
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/bookmakers.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/footer.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/df0b61cc0c.js"></script>
+
+</head>
+
+<body>
+
+    <div layout:fragment="conteudo">
+        <div class="container">
+            <div class="row">
+                <p class="titulo">Bookmakers</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <img th:src="@{/images/1xbet.png}" alt="Selo" style="height: 80px;">
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <p class="conteudo text-center">
+                                    Receba 100% do seu primeiro depósito (até 500 R$) totalmente grátis!
+                                </p>
+                            </div>
+                            <div class="row text-center">
+                                <a type="button" href="https://br-1xbet.com/pt/?tag=d_19530m_1264c_" class="btn btn-primary mt-15">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <img th:src="@{/images/188bet.png}" alt="Selo" style="height: 80px;">
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <p class="conteudo text-center">
+                                    Bônus : Receba 100% do seu primeiro depósito (até 400 R$) em apostas gratis!
+                                </p>
+                            </div>
+                            <div class="row text-center">
+                                <a type="button" href="https://www.188bet.com/pt-br/promotions" class="btn btn-primary mt-15">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-20">
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <img th:src="@{/images/bet365.png}" alt="Selo" style="height: 80px;">
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <p class="conteudo text-center">
+                                    Receba 100% do seu primeiro depósito (até 200 R$) totalmente grátis!
+                                </p>
+                            </div>
+                            <div class="row text-center">
+                                <a type="button" href="https://www.bet365.com/olp/open-account/?affiliate=365_324045" class="btn btn-primary mt-15">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <img th:src="@{/images/betmotion.png}" alt="Selo" style="height: 80px; width: 268px">
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <p class="conteudo text-center">
+                                    Bônus : Receba 100% do seu primeiro depósito (até 200 R$) totalmente grátis!
+                                </p>
+                            </div>
+                            <div class="row text-center">
+                                <a type="button" href="https://www.betmotion.com/br/bonus-boas-vindas?promo=26" class="btn btn-primary mt-15">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-20 mb-40">
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <img th:src="@{/images/netbet.png}" alt="Selo" style="height: 80px;">
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <p class="conteudo text-center">
+                                    Receba 50% do seu primeiro depósito (até 200 R$) totalmente grátis!
+                                </p>
+                            </div>
+                            <div class="row text-center">
+                                <a type="button" href="https://br.netbet.com/promotions/" class="btn btn-primary mt-15">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <img th:src="@{/images/pinnacle.jpg}" alt="Selo" style="height: 80px;">
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <p class="conteudo text-center">
+                                </p>
+                            </div>
+                            <div class="row text-center">
+                                <a type="button" href="https://www.pinnacle.com/pt/" class="btn btn-primary mt-15">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div th:replace="layout/fragments/footer :: footer_menu"></div>
+    </div>
+
+</body>
+</html>

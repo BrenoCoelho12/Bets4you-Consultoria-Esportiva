@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout1">
+
+<head>
+
+    <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/grupo_telegram.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/footer.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/df0b61cc0c.js"></script>
+
+</head>
+
+<body>
+
+    <div layout:fragment="conteudo">
+        <div class="container">
+            <div class="row">
+                <p class="titulo">Grupo free</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10">
+
+                    <p class="conteudo">
+                        Disponibilizamos o serviço de consultoria grátis para entradas ao vivo!
+                        É isso mesmo, você pode ter acesso a diversos prognósticos todos os dias gratuitamente.
+                        Será um prazer ter você no nosso canal!
+
+                        Entre agora mesmo: <a href="http://t.me/bets4youconsultoria">t.me/bets4youconsultoria</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 380px;">
+            <div th:replace="layout/fragments/footer :: footer_menu"></div>
+        </div>
+
+
+    </div>
+
+</body>
