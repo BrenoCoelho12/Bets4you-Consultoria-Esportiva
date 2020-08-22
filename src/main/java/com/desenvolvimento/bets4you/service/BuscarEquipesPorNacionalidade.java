@@ -23,7 +23,7 @@ public class BuscarEquipesPorNacionalidade {
 		if(!StringUtils.isEmpty(pais)) {
 			
 			List<Equipe> listaEquipes = new ArrayList<Equipe>();
-			listaEquipes = equipes.findByNacionalidade(pais);
+			listaEquipes = equipes.findByNacionalidadeOrderByNomeAsc(pais);
 			return listaEquipes;
 		}
 		
