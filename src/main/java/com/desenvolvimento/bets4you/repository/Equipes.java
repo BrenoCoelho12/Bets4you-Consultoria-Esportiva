@@ -13,7 +13,7 @@ import com.desenvolvimento.bets4you.model.Pais;
 @Repository
 public interface Equipes extends JpaRepository<Equipe, Long>, EquipesQueries {
 		
-	public List<Equipe> findByNacionalidade(Pais pais);
+	public List<Equipe> findByNacionalidadeOrderByNomeAsc(Pais pais);
 	
 	public Optional<Equipe> findByNacionalidadeAndNomeIgnoreCase(Pais pais, String nome);
 	
