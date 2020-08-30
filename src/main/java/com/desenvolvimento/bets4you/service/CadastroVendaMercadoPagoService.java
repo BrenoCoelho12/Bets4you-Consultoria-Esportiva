@@ -36,7 +36,7 @@ public class CadastroVendaMercadoPagoService {
 
         if (plano.isPresent() && usuarioLogado.isPresent()){
             Float valorPlano = plano.get().getValorTotal().floatValue();
-            MercadoPago.SDK.setAccessToken("APP_USR-3355084366349304-060401-d0d9c74d2a38416856746341d78cf07a-568143852");
+            MercadoPago.SDK.setAccessToken("TEST-3355084366349304-060401-2dad242761eda211677ed598ecb814ae-568143852");
 
             Payment payment = new Payment();
             payment
